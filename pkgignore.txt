@@ -1,0 +1,14 @@
+base
+base-devel
+intel-ucode
+lib32-libglvnd
+lib32-nvidia-utils
+lib32-opencl-nvidia
+libglvnd
+linux
+linux-firmware
+linux-headers
+nvidia-dkms
+nvidia-settings
+nvidia-utils
+opencl-nvidia
