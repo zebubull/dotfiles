@@ -18,6 +18,7 @@ neovim
 net-tools
 networkmanager
 noto-fonts-emoji
+openssh
 pinta
 pipewire
 pulsemixer
