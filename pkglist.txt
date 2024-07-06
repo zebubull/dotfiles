@@ -1,6 +1,7 @@
 acpi
 bash-completion
 brightnessctl
+btop
 cliphist
 dhcpcd
 figlet
