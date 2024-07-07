@@ -16,7 +16,7 @@ tab_bar_style fade
 tab_activity_symbol +
 tab_title_template {fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title} {num_windows}
 
-# include theme.conf
+include theme.conf
 
 # keybinds
 kitty_mod ctrl+shift
@@ -33,9 +33,3 @@ map kitty_mod+i set_tab_title
 map kitty_mod+h launch --cwd=current --location=hsplit
 map kitty_mod+v launch --cwd=current --location=vsplit
 map kitty_mod+w close_window
-
-
-# BEGIN_KITTY_THEME
-# Tokyo Night Moon
-include current-theme.conf
-# END_KITTY_THEME

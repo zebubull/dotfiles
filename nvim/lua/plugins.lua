@@ -1,13 +1,22 @@
 local plugins = {
+    -- {
+    --     'rktjmp/lush.nvim'
+    -- },
+    -- {
+    --     dir = '/home/zebu/.config/nvim-scheme',
+    --     priority = 1000,
+    --     lazy = false,
+    --     config = function()
+    --         vim.cmd("colorscheme gio")
+    --     end,
+    -- },
     {
-        'rktjmp/lush.nvim'
-    },
-    {
-        dir = '/home/zebu/.config/nvim-scheme',
-        priority = 1000,
+        "folke/tokyonight.nvim",
         lazy = false,
+        priority = 1000,
+        opts = {},
         config = function()
-            vim.cmd("colorscheme gio")
+            vim.cmd("colorscheme tokyonight-moon")
         end,
     },
     {

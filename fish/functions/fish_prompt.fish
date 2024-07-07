@@ -7,7 +7,7 @@ function prompt_draw_user -d "draw the username part of the prompt"
 end
 
 function prompt_draw_cwd -d "draw the cwd part of the prompt"
-    echo -s -n (set_color -b yellow black) ' ' (prompt_pwd) ' ' (set_color -b $argv[1] yellow) \uE0B0
+    echo -s -n (set_color -b green black) ' ' (prompt_pwd) ' ' (set_color -b $argv[1] green) \uE0B0
 end
 
 # Argument 2 is the status value to display
@@ -40,7 +40,7 @@ function fish_prompt
         set prompt_end_color black
     end
 
-    prompt_draw_user yellow
+    prompt_draw_user green
 
     if test $no_git -ne 1
         prompt_draw_cwd magenta
