@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [[ -z $1 ]]; then
+    echo "No system name was provided"
+    echo "Usage: sync.sh [system name]"
+    exit 1
+elif [[ ! -d $1 ]]; then
+    echo "No configuration for system '$1' found"
+    exit 1
+fi
+
 dcount=0
 dskipped=0
 
@@ -66,6 +75,14 @@ for target in ${config_files[@]}; do
     in=${split[1]}
     out=${split[0]}
     link_file "$in" "$out"
+done
+
+shopt -s globstar
+
+for target in $1/**/*; do
+    if [[ -f $target ]]; then
+        link_file "$target" "$HOME/.config/${target#$1/}"
+    fi
 done
 
 if ! [[ -f "pkgignore.txt" ]]; then

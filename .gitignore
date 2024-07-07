@@ -1,2 +1,5 @@
 mpd/database
 mpd/state
+
+# ignore symlinks to system files, all manual for now :p
+hypr/system.conf
