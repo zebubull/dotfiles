@@ -38,21 +38,23 @@ link_file() {
     # in case we copy to /etc
     sudo ln -s "$PWD/$1" "$2"
     echo "Installed $2 (from $1)"
+    fcount=$((fcount+1))
 }
 
 config_dirs=(
 	# desktop stuff
-	"hypr"
+	"hypr" "mako" "eww"
 	# editor
 	"nvim" "nvim-scheme"
     # term
     "kitty" "fish"
     # misc
-    "neofetch"
+    "neofetch" "mpd"
 )
 
 config_files=(
     "/etc/pacman.d/hooks/pkglist.hook,pacman/pkglist.hook"
+    "$HOME/.config/mpd-notification.conf,mpd-notification/mpd-notification.conf"
 )
 
 for target in ${config_dirs[@]}; do

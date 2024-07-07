@@ -1,0 +1,64 @@
+$bg: #30383E;
+$text: #E8FAED;
+
+$fg-1: #8CB1CB;
+
+* {
+  all: unset;
+  font-family: DejaVuSansM Nerd Font;
+  font-size: 16px;
+  color: $text;
+}
+
+.window {
+}
+
+.left, .right {
+  background-color: $bg;
+  padding: 4px;
+  border-radius: 32px;
+}
+
+.right {
+  margin-right: 16px;
+}
+
+.arch-logo {
+  color: #1793D0;
+  font-weight: bold;
+  font-size: 24px;
+  margin: -2px 8px;
+}
+
+.ws-box {
+  margin-right: 8px;
+}
+
+.ws {
+  padding: 0px 8px;
+}
+
+.ws.current {
+  color: $fg-1;
+}
+
+.time {
+  margin: 0px 8px;
+}
+
+.hour, .sep, .min {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.hour {
+  color: $fg-1;
+}
+
+.sep {
+  color: $fg-1;
+}
+
+.min {
+  color: $fg-1;
+}

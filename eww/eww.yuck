@@ -1,0 +1,32 @@
+(deflisten workspaces :initial "[]" "/usr/bin/bash $HOME/.config/eww/workspaces.sh")
+(deflisten current :initial 1 "/usr/bin/bash /home/zebu/.config/eww/active.sh")
+(defpoll volume :interval "2s" "/usr/bin/wpctl get-volume @DEFAULT_SINK@ | /usr/bin/awk '{print $2*100}'")
+
+(defwidget sep [] (label :class "sep" :text "󰇙"))
+
+(defwidget arch [] (label :class "arch-logo" :text "󰣇"))
+
+(defwidget workspaces [] 
+  (box :space-evenly false :class "ws-box"
+    (for ws in workspaces
+      (label :class "ws ${ws.id == current ? "current" : ""}" :text "${ws.id == current ? "" : ""}"))))
+
+(defwidget left [] (box :class "left" :halign "start" :space-evenly false (arch) (workspaces)))
+
+(defwidget time [] (box :class "time" :space-evenly false 
+                     (label :class "hour" :text "${formattime(EWW_TIME, "%l")}")
+                     (label :class "sep" :text ":")
+                     (label :class "min" :text "${formattime(EWW_TIME, "%M")}")
+                     ))
+
+(defwidget center [] (box :class "center" :halign "center" ))
+
+(defwidget right [] (box :class "right" :halign "end" (time)))
+
+(defwindow bar
+  :monitor 0 
+  :geometry (geometry :x "0px" :y "0px" :height "24px" :width "99%" :anchor "top center")
+  :exclusive true
+  :focusable false
+  :stacking "fg"
+  (centerbox :class "window" (left) (center) (right)))
