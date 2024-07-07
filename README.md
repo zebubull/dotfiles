@@ -17,8 +17,8 @@ folder for an example if you're confused. This feature might be removed in favor
 it is very over-engineered and I can see it becoming quite cumbersome in the future.
 
 ## Todo
-[x] Basic config
-[x] Sync packages
-[ ] Sync AUR packages
-[x] System-dependent config
-[ ] Maybe overhaul system-dependent config
+- [x] Basic config
+- [x] Sync packages
+- [ ] Sync AUR packages
+- [x] System-dependent config
+- [ ] Maybe overhaul system-dependent config
