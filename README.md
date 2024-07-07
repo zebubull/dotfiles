@@ -11,14 +11,13 @@ Some miscellaneous files that don't follow that pattern are linked to a specifie
 
 ## System-dependent Config
 I have both a laptop and a desktop so being able to config certain things for multiple systems is necessary.
-A system config is just a folder that is specified when calling `sync.sh` which contains the exact same
-structure of config dirs and then links individual files into where they should be. Take a peek in a system
-folder for an example if you're confused. This feature might be removed in favor of a simpler system becuase
-it is very over-engineered and I can see it becoming quite cumbersome in the future.
+When linking a directory, `sync.sh` will check to see if a folder with the name of the current system (by default the hostname)
+has a matching directory and link it. It will fall back to the common directory if it is not found. Individual file
+linking does not support system-dependent config yet and those files live in the base directory, not common.
 
 ## Todo
 - [x] Basic config
 - [x] Sync packages
 - [ ] Sync AUR packages
 - [x] System-dependent config
-- [ ] Maybe overhaul system-dependent config
+- [x] Maybe overhaul system-dependent config

@@ -1,11 +1,14 @@
 #!/bin/bash
 
+system=$1
+
 if [[ -z $1 ]]; then
-    echo "No system name was provided"
-    echo "Usage: sync.sh [system name]"
-    exit 1
-elif [[ ! -d $1 ]]; then
-    echo "No configuration for system '$1' found"
+    system=$(uname -n)
+    echo "No system name was provided, using hostname '$system'"
+fi
+
+if [[ ! -d "$system" ]]; then
+    echo "No configuration for system '$system' found"
     exit 1
 fi
 
@@ -17,17 +20,30 @@ fskipped=0
 
 link_dir() {
 	local target=$HOME/.config/$1
-    if [[ -L "$target" ]]; then
-		echo "Link to $target already exists, skipping."
-		dskipped=$((dskipped+1))
-		return
+    local source="$PWD/common/$1"
+    if [[ -d "$PWD/$system/$1" ]]; then
+        echo "Using system config ($system) for $1"
+        source="$PWD/$system/$1"
     fi
+
+    if [[ -L "$target" ]]; then
+        local link=$(readlink -f $target)
+        if [[ $link != $source ]]; then
+            echo "Link to $target is $link, updating to $source."
+        else
+            echo "Link to $target already exists, skipping."
+            dskipped=$((dskipped+1))
+            return
+        fi
+    fi
+
 	if [[ -f "$target" ]]; then
 		echo "Config for $target already exists, skipping."
 		dskipped=$((dskipped+1))
 		return
 	fi
-	ln -s "$PWD/$1" "$target"
+
+	ln -sfn "$source" "$target"
 	echo "Installed $target"
 	dcount=$((dcount+1))
 	return
@@ -45,7 +61,7 @@ link_file() {
         return
     fi
     # in case we copy to /etc
-    sudo ln -s "$PWD/$1" "$2"
+     sudo ln -s "$PWD/$1" "$2"
     echo "Installed $2 (from $1)"
     fcount=$((fcount+1))
 }
@@ -54,7 +70,7 @@ config_dirs=(
 	# desktop stuff
 	"hypr" "mako" "eww"
 	# editor
-	"nvim" "nvim-scheme"
+	"nvim" # "nvim-scheme"
     # term
     "kitty" "fish"
     # misc
@@ -75,14 +91,6 @@ for target in ${config_files[@]}; do
     in=${split[1]}
     out=${split[0]}
     link_file "$in" "$out"
-done
-
-shopt -s globstar
-
-for target in $1/**/*; do
-    if [[ -f $target ]]; then
-        link_file "$target" "$HOME/.config/${target#$1/}"
-    fi
 done
 
 if ! [[ -f "pkgignore.txt" ]]; then
