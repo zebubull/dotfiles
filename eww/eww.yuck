@@ -152,7 +152,7 @@
  
 (defwindow dash
   :monitor 0
-  :geometry (geometry :x "8px" :y "0px" :height "60%" :width "20%" :anchor "center left")
+  :geometry (geometry :x "8px" :y "0px" :height "60%" :width "20%" :anchor "center")
   :focusable false
   :exclusive false
   :stacking "fg"

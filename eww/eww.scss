@@ -3,7 +3,13 @@ $bg: #222436;
 $bg-light: #828bb8;
 $text: #c8d3f5;
 
-$fg-1: #c8d3f5;
+$fg-1: #bc96fa;
+
+$cpu: #fa737c;
+$mem: #bfe38a;
+$batt: #fac375;
+$vol: #7fa7fa;
+$bness: #dfc9b2;
 
 * {
   all: unset;
@@ -88,6 +94,7 @@ $fg-1: #c8d3f5;
 .album_art {
 	background-size: 200px 200px;
     background-repeat: no-repeat;
+    background-color: $bg-light;
 	min-height: 200px;
 	min-width: 200px;
     border-radius: 16px;
@@ -153,7 +160,7 @@ $fg-1: #c8d3f5;
   min-width: 24px;
   min-height: 24px;
   margin: 4px;
-  color: $fg-1;
+  color: $vol;
 }
 
 .volbar trough {
@@ -166,7 +173,7 @@ $fg-1: #c8d3f5;
 }
 
 .volbar trough highlight {
-  background-color: $fg-1;
+  background-color: $vol;
   border-radius: 5px;
 }
 
@@ -194,7 +201,26 @@ $fg-1: #c8d3f5;
 .perf scale trough highlight {
   margin: .1rem .0rem;
   border-radius: 10px;
-  background-color: $fg-1;
+}
+
+.cpubar trough highlight {
+  background-color: $cpu;
+}
+
+.membar trough highlight {
+  background-color: $mem;
+}
+
+.sys_volbar trough highlight {
+  background-color: $vol;
+}
+
+.batbar trough highlight {
+  background-color: $batt;
+}
+
+.bbar trough highlight {
+  background-color: $bness;
 }
 
 tooltip {
@@ -203,9 +229,32 @@ tooltip {
   margin: 4px;
 }
 
-.cpu, .bat, .vol, .bness, .mem, .pwrbtn label {
+.perf-label, .pwrbtn label {
   font-size: 24px;
   font-weight: bold;
+}
+
+.cpu {
+  color: $cpu;
+}
+
+.bat {
+  color: $batt;
+}
+
+.vol {
+  color: $vol;
+}
+
+.bness {
+  color: $bness;
+}
+
+.mem {
+  color: $mem;
+}
+
+.pwrbtn label {
   color: $fg-1;
 }
 
