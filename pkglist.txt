@@ -9,6 +9,7 @@ firefox
 fish
 git
 go
+grim
 hyprland
 jq
 kitty
@@ -24,11 +25,13 @@ net-tools
 networkmanager
 noto-fonts-cjk
 noto-fonts-emoji
+obs-studio
 openssh
 pinta
 pipewire
 pulsemixer
 rustup
+slurp
 socat
 swww
 thunar
