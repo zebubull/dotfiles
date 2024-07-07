@@ -32,9 +32,11 @@ rustup
 socat
 swww
 thunar
+ttf-cousine-nerd
 ttf-dejavu-nerd
 ufw
 unzip
+wev
 wireplumber
 wl-clipboard
 wofi
