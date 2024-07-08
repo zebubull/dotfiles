@@ -68,7 +68,7 @@ link_file() {
 
 config_dirs=(
 	# desktop stuff
-	"hypr" "mako" "eww" "gtk-3.0"
+	"hypr" "mako" "eww" "gtk-3.0" "wal"
 	# editor
 	"nvim" # "nvim-scheme"
     # term
@@ -80,6 +80,10 @@ config_dirs=(
 config_files=(
     "/etc/pacman.d/hooks/pkglist.hook,pacman/pkglist.hook"
     "$HOME/.config/mpd-notification.conf,mpd-notification/mpd-notification.conf"
+    "$HOME/.config/eww/colors.scss,$HOME/.cache/wal/colors.scss"
+    "$HOME/.config/kitty/current-theme.conf,$HOME/.cache/wal/colors-kitty.conf"
+    "$HOME/.config/hypr/colors-hyprland.conf,$HOME/.cache/wal/colors-hyprland.conf"
+    "$HOME/.config/mako/config,$HOME/.cache/wal/colors-mako"
 )
 
 for target in ${config_dirs[@]}; do

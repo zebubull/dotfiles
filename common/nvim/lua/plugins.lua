@@ -10,14 +10,22 @@ local plugins = {
     --         vim.cmd("colorscheme gio")
     --     end,
     -- },
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     opts = {},
+    --     config = function()
+    --         vim.cmd("colorscheme tokyonight-moon")
+    --     end,
+    -- },
     {
-        "folke/tokyonight.nvim",
+        'AlphaTechnolog/pywal.nvim',
         lazy = false,
         priority = 1000,
-        opts = {},
         config = function()
-            vim.cmd("colorscheme tokyonight-moon")
-        end,
+            vim.cmd("colorscheme pywal")
+        end
     },
     {
         'nvim-lualine/lualine.nvim',

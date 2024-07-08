@@ -30,7 +30,9 @@ obs-studio
 openssh
 pinta
 pipewire
+playerctl
 pulsemixer
+python-pywal
 rustup
 slurp
 socat

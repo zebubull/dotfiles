@@ -1,15 +1,17 @@
+@import 'colors.scss'
+
 /* $bg: #30383E; */
-$bg: #222436;
-$bg-light: #828bb8;
-$text: #c8d3f5;
+$bg: $background;
+$bg-light: $color8;
+$text: $color15;
 
-$fg-1: #bc96fa;
+$fg-1: $color13;
 
-$cpu: #fa737c;
-$mem: #bfe38a;
-$batt: #fac375;
-$vol: #7fa7fa;
-$bness: #dfc9b2;
+$cpu: $color2;
+$mem: $color4;
+$batt: $color3;
+$vol: $color5;
+$bness: $color6;
 
 * {
   all: unset;
@@ -203,7 +205,6 @@ $bness: #dfc9b2;
 }
 
 .perf scale trough highlight {
-  margin: .1rem .0rem;
   border-radius: 15px;
 }
 

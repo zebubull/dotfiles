@@ -1,5 +1,7 @@
 **/mpd/database
 **/mpd/state
 
-# ignore symlinks to system files, all manual for now :p
-hypr/system.conf
+**/eww/colors.scss
+**/kitty/current-theme.conf
+**/hypr/colors-hyprland.conf
+**/mako/config
