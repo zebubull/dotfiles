@@ -61,7 +61,7 @@ link_file() {
         return
     fi
     # in case we copy to /etc
-     sudo ln -s "$PWD/$1" "$2"
+     sudo ln -s "$1" "$2"
     echo "Installed $2 (from $1)"
     fcount=$((fcount+1))
 }
@@ -78,8 +78,8 @@ config_dirs=(
 )
 
 config_files=(
-    "/etc/pacman.d/hooks/pkglist.hook,pacman/pkglist.hook"
-    "$HOME/.config/mpd-notification.conf,mpd-notification/mpd-notification.conf"
+    "/etc/pacman.d/hooks/pkglist.hook,$HOME/.config/dotfiles/pacman/pkglist.hook"
+    "$HOME/.config/mpd-notification.conf,$HOME/.config/dotfiles/mpd-notification/mpd-notification.conf"
     "$HOME/.config/eww/colors.scss,$HOME/.cache/wal/colors.scss"
     "$HOME/.config/kitty/current-theme.conf,$HOME/.cache/wal/colors-kitty.conf"
     "$HOME/.config/hypr/colors-hyprland.conf,$HOME/.cache/wal/colors-hyprland.conf"
