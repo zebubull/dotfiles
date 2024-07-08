@@ -68,7 +68,7 @@ link_file() {
 
 config_dirs=(
 	# desktop stuff
-	"hypr" "mako" "eww"
+	"hypr" "mako" "eww" "gtk-3.0"
 	# editor
 	"nvim" # "nvim-scheme"
     # term

@@ -1,0 +1,274 @@
+/* $bg: #30383E; */
+$bg: #222436;
+$bg-light: #828bb8;
+$text: #c8d3f5;
+
+$fg-1: #bc96fa;
+
+$cpu: #fa737c;
+$mem: #bfe38a;
+$batt: #fac375;
+$vol: #7fa7fa;
+$bness: #dfc9b2;
+
+* {
+  all: unset;
+  font-family: Cousine Nerd Font;
+  font-size: 24px;
+  color: $text;
+}
+
+.window {
+}
+
+.left, .right {
+  background-color: $bg;
+  padding: 4px;
+  border-radius: 32px;
+}
+
+.right {
+  margin-right: 16px;
+}
+
+.arch-logo {
+  color: #1793D0;
+  font-weight: bold;
+  font-size: 36px;
+  margin: -4px 12px;
+}
+
+.ws-box {
+  margin-right: 12px;
+}
+
+.ws {
+  padding: 0px 12px;
+}
+
+.ws.current {
+  color: $fg-1;
+}
+
+.time {
+  margin: 0px 12px;
+}
+
+.hour, .sep, .min {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.hour {
+  color: $fg-1;
+}
+
+.sep {
+  color: $fg-1;
+}
+
+.min {
+  color: $fg-1;
+}
+
+.dash {
+  background-color: $bg;
+  border-radius: 16px
+}
+
+.name-box {
+  padding: 10px 0px;
+}
+
+.initials {
+  font-weight: bold;
+  font-size: 48px;
+  color: $fg-1;
+}
+
+.name, .kernel {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.album_art {
+	background-size: 250px 250px;
+    background-repeat: no-repeat;
+    background-color: $bg-light;
+	min-height: 250px;
+	min-width: 250px;
+    border-radius: 16px;
+	margin: 50px 20px 50px 20px;
+}
+
+.song {
+	color: $fg-1;
+	font-size: 36px;
+	font-weight: bold;
+	margin: 15px 0px 0px 0px;
+}
+
+.artist {
+	color: $fg-1;
+	font-size: 24px;
+	font-weight: normal;
+	margin: 0px 0px 8px 0px;
+}
+
+.music {
+  margin: 6px;
+}
+
+.prev label {
+	font-size: 48px;
+	font-weight: normal;
+}
+
+.play label {
+	color: $fg-1;
+	font-size: 72px;
+	font-weight: bold;
+}
+.next label {
+	font-size: 48px;
+	font-weight: normal;
+}
+
+.music_bar scale trough highlight {
+	all: unset;
+	background-color: $fg-1;
+	border-radius: 16px;
+}
+
+.music_bar scale trough {
+	all: unset;
+	background-color: $bg-light;
+	border-radius: 16px;
+	min-height: 30px;
+	min-width: 425px;
+	margin: 0px 0px 0px 0px;
+}
+
+.song_progress {
+    color: $fg-1;
+    font-size: 24px;
+}
+
+.volume-icon label {
+  margin: .2rem 0 .2rem 0;
+  font-size: 24px;
+  min-width: 36px;
+  min-height: 36px;
+  margin: 6px;
+  color: $vol;
+}
+
+.volbar trough {
+  all: unset;
+  background-color: $bg-light;
+  border-radius: 8px;
+  min-height: 15px;
+  min-width: 120px;
+  margin: .3rem 0 .3rem 0;
+}
+
+.volbar trough highlight {
+  background-color: $vol;
+  border-radius: 8px;
+}
+
+.shuffle label, .repeat label, .single label {
+  color: $text;
+  font-size: 27px;
+  /* margin-right: -4px; */
+  /* margin-bottom: -8px; */
+}
+
+.on label {
+    font-weight: bold;
+    color: $fg-1;
+}
+
+.perfs {
+  margin-top: 48px;
+}
+
+.perf scale trough {
+  all: unset;
+  background-color: $bg-light;
+  border-radius: 15px;
+  min-height: 240px;
+  min-width: 30px;
+  margin: 0 .3rem;
+}
+
+.perf scale trough highlight {
+  margin: .1rem .0rem;
+  border-radius: 15px;
+}
+
+.cpubar trough highlight {
+  background-color: $cpu;
+}
+
+.membar trough highlight {
+  background-color: $mem;
+}
+
+.sys_volbar trough highlight {
+  background-color: $vol;
+}
+
+.batbar trough highlight {
+  background-color: $batt;
+}
+
+.bbar trough highlight {
+  background-color: $bness;
+}
+
+tooltip {
+  background-color: $bg-light;
+  border-radius: 8px;
+  margin: 6px;
+}
+
+.perf-label, .pwrbtn label {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.perf-label {
+  margin-top: 8px;
+  padding-right: 12px;
+}
+
+.cpu {
+  color: $cpu;
+}
+
+.bat {
+  color: $batt;
+}
+
+.vol {
+  color: $vol;
+}
+
+.bness {
+  color: $bness;
+  padding-right: 8px;
+}
+
+.mem {
+  color: $mem;
+  padding-right: 17px;
+}
+
+.pwrbtn label {
+  color: $fg-1;
+}
+
+.power {
+  margin-top: 48px;
+}

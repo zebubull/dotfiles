@@ -4,6 +4,7 @@ brightnessctl
 btop
 cliphist
 dhcpcd
+discord
 figlet
 firefox
 fish
@@ -43,5 +44,6 @@ wev
 wireplumber
 wl-clipboard
 wofi
+xdg-desktop-portal
 xdg-desktop-portal-hyprland
 xdg-user-dirs
