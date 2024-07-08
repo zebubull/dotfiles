@@ -147,7 +147,7 @@
   (box :class "power" :orientation "h" :space-evenly true
     (button :class "pwrbtn" :onclick "systemctl poweroff" "")
     (button :class "pwrbtn" :onclick "systemctl reboot" "")
-    (button :class "pwrbtn" :onclick "systemctl hybrid-sleep" "󰒲")
+    (button :class "pwrbtn" :onclick "systemctl suspend" "󰒲")
     ))
  
 (defwindow dash
