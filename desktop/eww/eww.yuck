@@ -127,10 +127,11 @@
   ))
 
 (defwidget membar []
-  (box :class "perf" :orientation "v" :space-evenly false :tooltip "${round(EWW_RAM["used_mem_perc"], 1)}%"
+  (box :class "perf" :orientation "v" :space-evenly false 
     (scale :flipped true :class "membar" 
            :min 0 :max 100 
            :active false :orientation "v" 
+           :tooltip "${round(EWW_RAM["used_mem"] / 1024 / 1024, 0)} MiB"
            :value {EWW_RAM["used_mem_perc"]})
     (label :class "perf-label mem" :text "")
   ))
