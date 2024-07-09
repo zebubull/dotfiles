@@ -1,5 +1,6 @@
 acpi
 bash-completion
+bear
 brightnessctl
 btop
 cliphist
@@ -9,6 +10,7 @@ figlet
 firefox
 fish
 git
+glfw
 go
 grim
 hyprland
@@ -32,7 +34,7 @@ pinta
 pipewire
 playerctl
 pulsemixer
-python-pywal
+ripgrep
 rustup
 slurp
 socat
