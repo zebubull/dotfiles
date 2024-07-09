@@ -5,3 +5,5 @@ if status is-interactive
     figlet -w $width -c -k "I use Arch BTW"
     # Commands to run in interactive sessions can go here
 end
+
+set PATH $PATH ~/.local/bin
