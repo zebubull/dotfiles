@@ -70,16 +70,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = lsp_on_attach,
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-      virtual_text = false,
-      signs = true,
-      update_in_insert = false,
-      underline = true,
-    }
-  )
-
 -- used for autocompletion
 local capabilities = cmp_nvim_lsp.default_capabilities()
 

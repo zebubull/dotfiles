@@ -6,6 +6,7 @@ btop
 cliphist
 dhcpcd
 discord
+fastfetch
 figlet
 firefox
 fish
@@ -22,7 +23,6 @@ man-db
 mpc
 mpd
 nano
-neofetch
 neovim
 net-tools
 networkmanager
