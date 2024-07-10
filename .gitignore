@@ -4,4 +4,5 @@
 **/eww/colors.scss
 **/kitty/current-theme.conf
 **/hypr/colors-hyprland.conf
-**/mako/config
+**/mako/
+**/rofi/

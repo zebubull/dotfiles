@@ -68,7 +68,7 @@ link_file() {
 
 config_dirs=(
 	# desktop stuff
-	"hypr" "mako" "eww" "gtk-3.0" "wal"
+	"hypr" "mako" "eww" "gtk-3.0" "wal" "rofi"
 	# editor
 	"nvim" # "nvim-scheme"
     # term
@@ -84,6 +84,7 @@ config_files=(
     "$HOME/.config/kitty/current-theme.conf,$HOME/.cache/wal/colors-kitty.conf"
     "$HOME/.config/hypr/colors-hyprland.conf,$HOME/.cache/wal/colors-hyprland.conf"
     "$HOME/.config/mako/config,$HOME/.cache/wal/colors-mako"
+    "$HOME/.config/rofi/config.rasi,$HOME/.cache/wal/colors-rofi-dark.rasi"
 )
 
 for target in ${config_dirs[@]}; do

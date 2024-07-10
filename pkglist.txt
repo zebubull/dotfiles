@@ -34,7 +34,9 @@ pinta
 pipewire
 playerctl
 pulsemixer
+qpwgraph
 ripgrep
+rofi-wayland
 rustup
 slurp
 socat
