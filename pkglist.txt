@@ -7,6 +7,9 @@ cliphist
 dhcpcd
 discord
 fastfetch
+fcitx5
+fcitx5-configtool
+fcitx5-mozc
 figlet
 firefox
 fish
@@ -30,11 +33,13 @@ noto-fonts-cjk
 noto-fonts-emoji
 obs-studio
 openssh
+picard
 pinta
 pipewire
 playerctl
 pulsemixer
 qpwgraph
+qt5-wayland
 ripgrep
 rofi-wayland
 rustup
@@ -53,3 +58,4 @@ wofi
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
 xdg-user-dirs
+yt-dlp
