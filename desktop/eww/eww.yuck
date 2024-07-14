@@ -28,7 +28,7 @@
 (defwidget workspaces [] 
   (box :space-evenly false :class "ws-box"
     (for ws in workspaces
-      (label :class "ws ${ws.id == current ? "current" : ""}" :text "${ws.id == current ? "" : ""}"))))
+      (button :class "ws ${ws.id == current ? "current" : ""}" :onclick "hyprctl dispatch workspace ${ws.id}" "${ws.id == current ? "" : ""}"))))
 
 (defwidget left [] (box :class "left" :halign "start" :space-evenly false (arch) (workspaces)))
 

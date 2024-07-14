@@ -5,7 +5,7 @@ $bg: $background;
 $bg-light: $color8;
 $text: $color15;
 
-$fg-1: $color1;
+$fg-1: $color9;
 
 $cpu: $color2;
 $mem: $color4;
@@ -48,7 +48,7 @@ $bness: $color6;
   padding: 0px 12px;
 }
 
-.ws.current {
+.ws.current label {
   color: $fg-1;
 }
 
