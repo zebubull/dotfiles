@@ -13,6 +13,8 @@ fcitx5-mozc
 figlet
 firefox
 fish
+gamemode
+gamescope
 git
 glfw
 go
@@ -21,8 +23,10 @@ hyprland
 jq
 kitty
 less
+lib32-gamemode
 mako
 man-db
+man-pages
 mpc
 mpd
 nano
@@ -37,6 +41,7 @@ picard
 pinta
 pipewire
 playerctl
+premake
 pulsemixer
 qpwgraph
 qt5-wayland
@@ -45,6 +50,7 @@ rofi-wayland
 rustup
 slurp
 socat
+steam
 swww
 thunar
 ttf-cousine-nerd
@@ -56,6 +62,8 @@ wireplumber
 wl-clipboard
 wofi
 xdg-desktop-portal
+xdg-desktop-portal-gnome
 xdg-desktop-portal-hyprland
 xdg-user-dirs
 yt-dlp
+zig
