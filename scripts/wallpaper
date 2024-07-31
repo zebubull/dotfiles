@@ -3,12 +3,12 @@
 name=${1%.*}
 
 if [[ -f "$name.json" ]]; then
-    wal --cols16 darken -f "$name.json" -a 85
+    wal --cols16 darken -f "$name.json" -a 95
 else
     if [[ $2 == "l" ]]; then
-        wal --cols16 lighten -i "$1" -a 85
+        wal --cols16 lighten -i "$1" -a 95
     else
-        wal --cols16 darken -i "$1" -a 85
+        wal --cols16 darken -i "$1" -a 95
     fi
 fi
 makoctl reload

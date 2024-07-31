@@ -59,7 +59,7 @@ local plugins = {
         end,
         config = function()
             local wk = require('which-key')
-            wk.setup({key_labels = { ['<leader>'] = 'SPC'}})
+            wk.setup({replace = { ['<leader>'] = 'SPC'}})
         end,
     },
     {

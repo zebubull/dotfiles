@@ -43,6 +43,7 @@ openssh
 picard
 pinta
 pipewire
+pipewire-pulse
 playerctl
 premake
 pulsemixer
