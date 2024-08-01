@@ -175,6 +175,12 @@ local plugins = {
             },
         }
     },
+    {
+        'elentok/format-on-save.nvim',
+        config = function()
+            require('config.format')
+        end,
+    },
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
