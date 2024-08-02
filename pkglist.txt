@@ -1,6 +1,8 @@
 acpi
+alsa-utils
 bash-completion
 bear
+bluez
 brightnessctl
 btop
 cliphist
@@ -15,7 +17,6 @@ figlet
 firefox
 fish
 gamemode
-gamescope
 git
 glfw
 go
@@ -25,6 +26,7 @@ jq
 kitty
 less
 lib32-gamemode
+lib32-vulkan-radeon
 lxqt-policykit
 mako
 man-db
@@ -61,6 +63,11 @@ ttf-dejavu-nerd
 ufw
 unzip
 vlc
+vulkan-extra-layers
+vulkan-extra-tools
+vulkan-html-docs
+vulkan-tools
+vulkan-utility-libraries
 wev
 wireplumber
 wl-clipboard

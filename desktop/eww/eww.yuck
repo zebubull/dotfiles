@@ -43,7 +43,7 @@
 (defwidget right [] (box :class "right" :halign "end" (time)))
 
 (defwindow bar
-  :monitor 0 
+  :monitor "LG Ultra HD" 
   :geometry (geometry :x "0px" :y "4px" :height "36px" :width "99%" :anchor "top center")
   :exclusive true
   :focusable false
@@ -152,7 +152,7 @@
     ))
  
 (defwindow dash
-  :monitor 0
+  :monitor "LG Ultra HD"
   :geometry (geometry :x "8px" :y "0px" :height "40%" :width "25%" :anchor "center")
   :focusable false
   :exclusive false
