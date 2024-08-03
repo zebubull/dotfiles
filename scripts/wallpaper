@@ -1,14 +1,22 @@
 #!/usr/bin/bash
 
+set -x
+
 name=${1%.*}
 
+if [[ -z "$3" ]]; then
+    alpha="95"
+else
+    alpha="$3"
+fi
+
 if [[ -f "$name.json" ]]; then
-    wal --cols16 darken -f "$name.json" -a 95
+    wal --cols16 darken -f "$name.json" -a $alpha
 else
     if [[ $2 == "l" ]]; then
-        wal --cols16 lighten -i "$1" -a 95
+        wal --cols16 lighten -i "$1" -a $alpha
     else
-        wal --cols16 darken -i "$1" -a 95
+        wal --cols16 darken -i "$1" -a $alpha
     fi
 fi
 makoctl reload
