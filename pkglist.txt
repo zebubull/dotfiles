@@ -1,4 +1,3 @@
-acpi
 alsa-utils
 bash-completion
 bear
@@ -26,7 +25,6 @@ jq
 kitty
 less
 lib32-gamemode
-lib32-vulkan-radeon
 lxqt-policykit
 mako
 man-db
