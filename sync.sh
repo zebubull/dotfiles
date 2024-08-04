@@ -80,11 +80,11 @@ config_dirs=(
 config_files=(
     "/etc/pacman.d/hooks/pkglist.hook,$HOME/.config/dotfiles/pacman/pkglist.hook"
     "$HOME/.config/mpd-notification.conf,$HOME/.config/dotfiles/mpd-notification/mpd-notification.conf"
-    "$HOME/.config/eww/colors.scss,$HOME/.cache/colors/colors.scss"
-    "$HOME/.config/kitty/current-theme.conf,$HOME/.cache/colors/colors-kitty.conf"
-    "$HOME/.config/hypr/colors-hyprland.conf,$HOME/.cache/colors/colors-hyprland.conf"
-    "$HOME/.config/mako/config,$HOME/.cache/colors/colors-mako"
-    "$HOME/.config/rofi/config.rasi,$HOME/.cache/colors/colors-rofi.rasi"
+    "$HOME/.config/eww/colors.scss,$HOME/.cache/wal/colors.scss"
+    "$HOME/.config/kitty/current-theme.conf,$HOME/.cache/wal/colors-kitty.conf"
+    "$HOME/.config/hypr/colors-hyprland.conf,$HOME/.cache/wal/colors-hyprland.conf"
+    "$HOME/.config/mako/config,$HOME/.cache/wal/colors-mako"
+    "$HOME/.config/rofi/config.rasi,$HOME/.cache/wal/colors-rofi-dark.rasi"
     "$HOME/.local/bin/wallpaper,$HOME/.config/dotfiles/scripts/wallpaper"
 )
 

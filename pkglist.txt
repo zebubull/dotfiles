@@ -1,9 +1,11 @@
-acpi
+alsa-utils
 bash-completion
 bear
+bluez
 brightnessctl
 btop
 cliphist
+cloc
 dhcpcd
 discord
 fastfetch
@@ -14,7 +16,6 @@ figlet
 firefox
 fish
 gamemode
-gamescope
 git
 glfw
 go
@@ -24,6 +25,7 @@ jq
 kitty
 less
 lib32-gamemode
+lxqt-policykit
 mako
 man-db
 man-pages
@@ -35,11 +37,13 @@ net-tools
 networkmanager
 noto-fonts-cjk
 noto-fonts-emoji
+nvtop
 obs-studio
 openssh
 picard
 pinta
 pipewire
+pipewire-pulse
 playerctl
 premake
 pulsemixer
@@ -58,6 +62,11 @@ ttf-dejavu-nerd
 ufw
 unzip
 vlc
+vulkan-extra-layers
+vulkan-extra-tools
+vulkan-html-docs
+vulkan-tools
+vulkan-utility-libraries
 wev
 wireplumber
 wl-clipboard

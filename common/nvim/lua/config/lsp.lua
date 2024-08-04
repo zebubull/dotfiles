@@ -62,6 +62,9 @@ lspsaga.setup({
     move_in_saga = { prev = '<C-k>', next = '<C-j>' },
     finder_action_keys = { open = '<CR>' },
     definition_action_keys = { edit = '<CR>' },
+    ui = {
+        code_action = '!',
+    },
 })
 
 
@@ -85,20 +88,3 @@ for _, server in pairs(lsps) do
         })
     end
 end
-
-lspconfig["lua_ls"].setup({
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.stdpath("config") .. "/lua"] = true,
-                }
-            }
-        }
-    }
-})

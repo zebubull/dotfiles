@@ -1,16 +1,31 @@
 #!/usr/bin/bash
 
-set -e
+set -x
 
 name=${1%.*}
 
-if [[ -f "$name.json" ]]; then
-    wal --cols16 darken -f "$name.json" -a 85
+if [[ -z "$3" ]]; then
+    alpha="95"
 else
-    wal --cols16 darken -i "$1" -a 85
+    alpha="$3"
+fi
+
+if [[ -f "$name.json" ]]; then
+    wal --cols16 darken -f "$name.json" -a $alpha
+else
+    if [[ $2 == "l" ]]; then
+        wal --cols16 lighten -i "$1" -a $alpha
+    else
+        wal --cols16 darken -i "$1" -a $alpha
+    fi
 fi
 makoctl reload
 eww reload
-eww close bar
-eww open bar
 swww img -t wipe $1
+
+eww active-windows | grep "bar"
+if [[ ! $? ]]; then
+    eww close bar
+    eww open bar
+fi
+

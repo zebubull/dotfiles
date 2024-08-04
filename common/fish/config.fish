@@ -5,3 +5,4 @@ if status is-interactive
 end
 
 set PATH $PATH ~/.local/bin
+source ~/.config/fish/secrets.fish

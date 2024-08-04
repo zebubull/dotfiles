@@ -28,7 +28,7 @@
 (defwidget workspaces [] 
   (box :space-evenly false :class "ws-box"
     (for ws in workspaces
-      (button :class "ws ${ws.id == current ? "current" : ""}" :onclick "hyprctl dispatch workspace ${ws.id}" "${ws.id == current ? "" : ""}"))))
+      (label :class "ws ${ws.id == current ? "current" : ""}" :text "${ws.id == current ? "" : ""}"))))
 
 (defwidget left [] (box :class "left" :halign "start" :space-evenly false (arch) (workspaces)))
 
@@ -43,8 +43,8 @@
 (defwidget right [] (box :class "right" :halign "end" (time)))
 
 (defwindow bar
-  :monitor "LG Ultra HD" 
-  :geometry (geometry :x "0px" :y "4px" :height "36px" :width "99%" :anchor "top center")
+  :monitor 0 
+  :geometry (geometry :x "0px" :y "4px" :height "32px" :width "99%" :anchor "top center")
   :exclusive true
   :focusable false
   :stacking "fg"
@@ -127,7 +127,7 @@
   ))
 
 (defwidget membar []
-  (box :class "perf" :orientation "v" :space-evenly false 
+  (box :class "perf" :orientation "v" :space-evenly false
     (scale :flipped true :class "membar" 
            :min 0 :max 100 
            :active false :orientation "v" 
@@ -140,7 +140,7 @@
   (box :class "perfs" :orientation "h" :space-evenly true :spacing 60
   (cpubar)
   (membar)
-  ;; (batbar)
+  (batbar)
   (volbar)
   (bbar)))
 
@@ -148,12 +148,12 @@
   (box :class "power" :orientation "h" :space-evenly true
     (button :class "pwrbtn" :onclick "systemctl poweroff" "")
     (button :class "pwrbtn" :onclick "systemctl reboot" "")
-    ;; (button :class "pwrbtn" :onclick "systemctl suspend" "󰒲")
+    (button :class "pwrbtn" :onclick "systemctl suspend" "󰒲")
     ))
  
 (defwindow dash
-  :monitor "LG Ultra HD"
-  :geometry (geometry :x "8px" :y "0px" :height "40%" :width "25%" :anchor "center")
+  :monitor 0
+  :geometry (geometry :x "8px" :y "0px" :height "50%" :width "35%" :anchor "center")
   :focusable false
   :exclusive false
   :stacking "fg"
