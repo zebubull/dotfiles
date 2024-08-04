@@ -62,7 +62,6 @@ wev
 wireplumber
 wl-clipboard
 wofi
-xdg-desktop-portal
 xdg-desktop-portal-gnome
 xdg-desktop-portal-hyprland
 xdg-user-dirs
