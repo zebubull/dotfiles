@@ -15,7 +15,7 @@ $bness: $color6;
 * {
   all: unset;
   font-family: Cousine Nerd Font;
-  font-size: 16px;
+  font-size: 24px;
   color: $text;
 }
 
@@ -35,7 +35,7 @@ $bness: $color6;
 .arch-logo {
   color: #1793D0;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 28px;
   margin: -2px 8px;
 }
 
@@ -44,7 +44,7 @@ $bness: $color6;
 }
 
 .ws {
-  padding: 0px 8px;
+  padding: 0px 10px;
 }
 
 .ws.current {
@@ -52,11 +52,11 @@ $bness: $color6;
 }
 
 .time {
-  margin: 0px 8px;
+  margin: 0px 12px;
 }
 
 .hour, .sep, .min {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -81,37 +81,26 @@ $bness: $color6;
   padding: 10px 0px;
 }
 
-.initials {
-  font-weight: bold;
-  font-size: 48px;
-  color: $fg-1;
-}
-
-.name, .kernel {
-  font-weight: bold;
-  font-size: 18px;
-}
-
 .album_art {
-	background-size: 200px 200px;
+	background-size: 240px 240px;
     background-repeat: no-repeat;
     background-color: $bg-light;
-	min-height: 200px;
-	min-width: 200px;
+	min-height: 240px;
+	min-width: 240px;
     border-radius: 16px;
 	margin: 50px 20px 50px 20px;
 }
 
 .song {
 	color: $fg-1;
-	font-size: 24px;
+	font-size: 32px;
 	font-weight: bold;
 	margin: 10px 0px 0px 0px;
 }
 
 .artist {
 	color: $fg-1;
-	font-size: 16px;
+	font-size: 24;
 	font-weight: normal;
 	margin: 0px 0px 5px 0px;
 }
@@ -121,17 +110,17 @@ $bness: $color6;
 }
 
 .prev label {
-	font-size: 32px;
+	font-size: 48px;
 	font-weight: normal;
 }
 
 .play label {
 	color: $fg-1;
-	font-size: 48px;
+	font-size: 64;
 	font-weight: bold;
 }
 .next label {
-	font-size: 32px;
+	font-size: 48;
 	font-weight: normal;
 }
 
@@ -146,21 +135,21 @@ $bness: $color6;
 	background-color: $bg-light;
 	border-radius: 8px;
 	min-height: 20px;
-	min-width: 310px;
+	min-width: 380px;
 	margin: 0px 0px 0px 0px;
 }
 
 .song_progress {
     color: $fg-1;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .volume-icon label {
   margin: .2rem 0 .2rem 0;
-  font-size: 16px;
-  min-width: 24px;
-  min-height: 24px;
-  margin: 4px;
+  font-size: 24px;
+  min-width: 32px;
+  min-height: 32px;
+  margin: 8px;
   color: $vol;
 }
 
@@ -169,7 +158,7 @@ $bness: $color6;
   background-color: $bg-light;
   border-radius: 5px;
   min-height: 10px;
-  min-width: 80px;
+  min-width: 100px;
   margin: .3rem 0 .3rem 0;
 }
 
@@ -180,7 +169,7 @@ $bness: $color6;
 
 .shuffle label, .repeat label, .single label {
   color: $text;
-  font-size: 18px;
+  font-size: 27px;
   /* margin-right: -4px; */
   /* margin-bottom: -8px; */
 }
@@ -193,15 +182,15 @@ $bness: $color6;
 .perf scale trough {
   all: unset;
   background-color: $bg-light;
-  border-radius: 10px;
-  min-height: 160px;
-  min-width: 20px;
-  margin: 0 .3rem;
+  border-radius: 15px;
+  min-height: 240px;
+  min-width: 30px;
+  margin: 1rem .5rem;
 }
 
 .perf scale trough highlight {
   margin: .1rem .0rem;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .cpubar trough highlight {
@@ -231,7 +220,7 @@ tooltip {
 }
 
 .perf-label, .pwrbtn label {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
 }
 

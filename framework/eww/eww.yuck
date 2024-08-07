@@ -44,7 +44,7 @@
 
 (defwindow bar
   :monitor 0 
-  :geometry (geometry :x "0px" :y "4px" :height "24px" :width "99%" :anchor "top center")
+  :geometry (geometry :x "0px" :y "4px" :height "32px" :width "99%" :anchor "top center")
   :exclusive true
   :focusable false
   :stacking "fg"
@@ -153,7 +153,7 @@
  
 (defwindow dash
   :monitor 0
-  :geometry (geometry :x "8px" :y "0px" :height "60%" :width "20%" :anchor "center")
+  :geometry (geometry :x "8px" :y "0px" :height "50%" :width "35%" :anchor "center")
   :focusable false
   :exclusive false
   :stacking "fg"
