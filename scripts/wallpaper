@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 
-set -x
-
 name=${1%.*}
 
 if [[ -z "$3" ]]; then

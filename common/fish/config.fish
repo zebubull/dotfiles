@@ -5,5 +5,8 @@ if status is-interactive
     alias l="ll"
 end
 
-set PATH $PATH ~/.local/bin
+fish_add_path ~/.local/bin
+set EDITOR helix
 source ~/.config/fish/secrets.fish
+
+starship init fish | source

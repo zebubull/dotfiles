@@ -12,6 +12,7 @@ end
 
 function prompt_draw_user -d "draw the username part of the prompt"
     echo -s -n (set_color cyan) \u25D6 (set_color -b cyan black -o) ' ' $USER (set_color normal) (set_color -b cyan white) '@' (set_color black) (prompt_hostname) ' ' (set_color -b $argv[1] cyan)
+    # echo -s -n (set_color cyan) \u25D6 (set_color -b cyan black -o) ' ' $USER ' ' (set_color -b $argv[1] cyan)
     prompt_draw_tip 0
 end
 
@@ -66,7 +67,11 @@ function fish_prompt
     if test $last_status -ne 0
         prompt_draw_status black $last_status 1
     end
-    
+
     # classic shell prompt for vibes ig
     echo -s -n (set_color normal) ' $ '
+end
+
+function fish_right_prompt -d "Write out the right prompt"
+    date '+%I:%M:%S'
 end
