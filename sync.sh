@@ -86,6 +86,7 @@ config_files=(
     "$HOME/.config/mako/config,$HOME/.cache/wal/colors-mako"
     "$HOME/.config/rofi/config.rasi,$HOME/.cache/wal/colors-rofi-dark.rasi"
     "$HOME/.local/bin/wallpaper,$HOME/.config/dotfiles/scripts/wallpaper"
+    "$HOME/.config/starship.toml,$HOME/.config/dotfiles/common/starship.toml"
 )
 
 mkdir -p "/etc/pacman.d/hooks"
