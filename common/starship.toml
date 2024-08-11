@@ -29,11 +29,11 @@ $time\
 """
 
 right_format = """
-[](fg:purple)\
-$status\
-[](fg:red bg:purple)\
+[](fg:red)\
 $cmd_duration
-[](fg:blue bg:red)\
+[](fg:purple bg:red)\
+$status\
+[](fg:blue bg:purple)\
 $battery\
 [](fg:cyan bg:blue)\
 $hostname\
@@ -196,12 +196,12 @@ format = '[ $symbol ($version) ]($style)'
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bold fg:#BD12CD bg:cyan"
+# style = "bold fg:#BD12CD bg:cyan"
+style = "bold fg:black bg:cyan"
 format = '[ ♥ $time ]($style)'
 
 [status]
 disabled = false
 style = "bold fg:#DA253C  bg:purple"
-symbol = "🔴"
-# format = "[ $symbol$status ]($style)"
+symbol = " 🔴"
 format = '[$symbol$common_meaning$signal_name$maybe_int ]($style)'
