@@ -20,6 +20,7 @@ fi
 makoctl reload
 eww reload
 swww img -t wipe $1
+killall -SIGUSR2 waybar
 
 eww active-windows | grep "bar"
 if [[ ! $? ]]; then

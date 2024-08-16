@@ -1,5 +1,5 @@
 format = """
-[](fg:red)\
+[ ](bg:red)\
 $shell\
 $username\
 $os\
@@ -24,26 +24,41 @@ $scala\
 $zig\
 [](fg:yellow bg:cyan)\
 $time\
-[](fg:cyan)\
-\n$character
-"""
-
-right_format = """
-[](fg:red)\
-$cmd_duration
+[](fg:cyan)\
+$fill\
+[](fg:red)\
+$cmd_duration\
 [](fg:purple bg:red)\
 $status\
 [](fg:blue bg:purple)\
 $battery\
 [](fg:cyan bg:blue)\
 $hostname\
-[@](bold fg:bright-white bg:cyan)
+[@](bold fg:bright-white bg:cyan)\
 $localip\
-[](fg:cyan)\
+[ ](bg:cyan)\
+\n$character
 """
+
+# right_format = """
+# [](fg:red)\
+# $cmd_duration
+# [](fg:purple bg:red)\
+# $status\
+# [](fg:blue bg:purple)\
+# $battery\
+# [](fg:cyan bg:blue)\
+# $hostname\
+# [@](bold fg:bright-white bg:cyan)
+# $localip\
+# [](fg:cyan)\
+# """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
+
+[fill]
+symbol = ' '
 
 [shell]
 fish_indicator = '󰈺'
@@ -99,9 +114,6 @@ ssh_only = false
 format = "[$localipv4 ]($style)"
 disabled = false
 
-[battery]
-style = "fg:black bg:blue"
-
 [[battery.display]]
 threshold = 15
 style = 'bold fg:#DA253C bg:blue'
@@ -116,7 +128,7 @@ style = 'fg:black bg:blue'
 
 [cmd_duration]
 style = "fg:black bg:red"
-format="[took ]($style)[$duration ](bold $style)"
+format="[ took ]($style)[$duration ](bold $style)"
 min_time = 0
 show_milliseconds = true
 

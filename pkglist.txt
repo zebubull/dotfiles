@@ -17,6 +17,7 @@ figlet
 firefox
 fish
 gamemode
+gdb
 git
 glfw
 glow
@@ -29,6 +30,7 @@ kitty
 less
 lib32-gamemode
 lib32-vulkan-radeon
+lldb
 lxqt-policykit
 mako
 man-db
@@ -43,6 +45,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 nvtop
 obs-studio
+openbsd-netcat
 openssh
 picard
 pinta
@@ -75,6 +78,7 @@ vulkan-extra-tools
 vulkan-html-docs
 vulkan-tools
 vulkan-utility-libraries
+waybar
 wev
 wireplumber
 wl-clipboard

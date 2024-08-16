@@ -37,8 +37,6 @@ def draw_tab(
     screen.cursor.fg = bg
 
     if is_first:
-        screen.cursor.x += 1
-        _do_round(f'{left_round}')
         screen.draw(' ')
     else:
         screen.draw('｜ ')
@@ -52,8 +50,7 @@ def draw_tab(
         _do_title()
 
     if is_last:
-        screen.draw(' ')
-        _do_round(f'{right_round}')
+        screen.draw(' ' * (screen.columns - screen.cursor.x))
     else:
         screen.draw(f' ')
 
