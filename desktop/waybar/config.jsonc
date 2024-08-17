@@ -1,6 +1,6 @@
 {
   "spacing": 16,
-  "height": 46,
+  "height": 38,
   "modules-left": [
     "hyprland/workspaces",
     "tray",
@@ -36,7 +36,7 @@
     "format": "  {used}GiB"
   },
   "load": {
-    "format": "󰍛 {}%"
+    "format": "󰍛 {load1}%"
   },
   "mpd": {
     "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ｜ {artist} - {title}",

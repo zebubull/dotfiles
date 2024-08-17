@@ -1,7 +1,7 @@
 @import url("colors.css");
 
 * {
-  font-size: 24px;
+  font-size: 16px;
   font-family: "DejaVuSansM Nerd Font";
   color: @color15;
 }
