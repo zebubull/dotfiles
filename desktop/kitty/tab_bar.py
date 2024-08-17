@@ -2,14 +2,11 @@ from kitty.fast_data_types import Screen, get_options
 from kitty.tab_bar import DrawData, ExtraData, TabBarData, draw_title, as_rgb
 from kitty.utils import color_as_int
 
-left_round = '◖'
-right_round = '◗'
-
 opts = get_options()
 
-fg = as_rgb(color_as_int(opts.color15))
-bg = as_rgb(color_as_int(opts.color0))
-active_fg = as_rgb(color_as_int(opts.color1))
+fg = as_rgb(color_as_int(opts.color0))
+bg = as_rgb(color_as_int(opts.color7))
+active_fg = as_rgb(color_as_int(opts.color15))
 
 def draw_tab(
     draw_data: DrawData, screen: Screen, tab: TabBarData,
