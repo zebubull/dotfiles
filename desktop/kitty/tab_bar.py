@@ -4,7 +4,7 @@ from kitty.utils import color_as_int
 
 opts = get_options()
 
-fg = as_rgb(color_as_int(opts.color0))
+fg = as_rgb(color_as_int(opts.color8))
 bg = as_rgb(color_as_int(opts.color7))
 active_fg = as_rgb(color_as_int(opts.color15))
 
