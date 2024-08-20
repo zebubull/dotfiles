@@ -25,25 +25,40 @@ $zig\
 [](fg:yellow bg:cyan)\
 $time\
 [](fg:cyan)\
-\n$character
-"""
-
-right_format = """
+$fill\
 [](fg:red)\
-$cmd_duration
+$cmd_duration\
 [](fg:purple bg:red)\
 $status\
 [](fg:blue bg:purple)\
 $battery\
 [](fg:cyan bg:blue)\
 $hostname\
-[@](bold fg:bright-white bg:cyan)
+[@](bold fg:bright-white bg:cyan)\
 $localip\
 [](fg:cyan)\
+\n$character
 """
+
+# right_format = """
+# [](fg:red)\
+# $cmd_duration
+# [](fg:purple bg:red)\
+# $status\
+# [](fg:blue bg:purple)\
+# $battery\
+# [](fg:cyan bg:blue)\
+# $hostname\
+# [@](bold fg:bright-white bg:cyan)
+# $localip\
+# [](fg:cyan)\
+# """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
+
+[fill]
+symbol = ' '
 
 [shell]
 fish_indicator = '󰈺'
@@ -65,7 +80,7 @@ disabled = false
 # represents the current operating system
 [os]
 style = "fg:black bg:red"
-format = "[on ]($style)[$name](bold fg:bright-green bg:red)"
+format = "[on ]($style)[$name ](bold fg:bright-green bg:red)"
 disabled = false# Disabled by default
 
 [directory]
@@ -100,7 +115,7 @@ format = "[$localipv4 ]($style)"
 disabled = false
 
 [battery]
-style = "fg:black bg:blue"
+format = "[ $symbol$percentage ]($style)"
 
 [[battery.display]]
 threshold = 15
