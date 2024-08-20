@@ -1,0 +1,56 @@
+{
+  "spacing": 16,
+  "height": 38,
+  "modules-left": [
+    "hyprland/workspaces",
+    "tray",
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "mpd",
+    "network",
+    "disk",
+    "memory",
+    "load",
+    "clock"
+  ],
+  "hyprland/window": {
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*) - fish": "> [$1]",
+    },
+    "max-length": 50
+  },
+  "tray": {
+    "show-passive-items": true,
+    "icon-size": 24,
+    "spacing": 8,
+  },
+  "disk": {
+    "format": " {percentage_used}%",
+    "path": "/home"
+  },
+  "memory": {
+    "format": "  {used}GiB"
+  },
+  "load": {
+    "format": "󰍛 {load1}%"
+  },
+  "mpd": {
+    "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ｜ {title} by {artist}",
+    "artist-len": 20,
+    "max-length": 50,
+    "on-click": "mpc toggle",
+    "on-scroll-up": "mpc next",
+    "on-scroll-down": "mpc prev",
+    "state-icons": {
+        "paused": " ",
+        "playing": ""
+    }
+  },
+  "network": {
+    "format": "{ipaddr}/{cidr}"
+  },
+}

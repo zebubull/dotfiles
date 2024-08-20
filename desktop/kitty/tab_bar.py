@@ -2,14 +2,11 @@ from kitty.fast_data_types import Screen, get_options
 from kitty.tab_bar import DrawData, ExtraData, TabBarData, draw_title, as_rgb
 from kitty.utils import color_as_int
 
-left_round = '◖'
-right_round = '◗'
-
 opts = get_options()
 
-fg = as_rgb(color_as_int(opts.color15))
-bg = as_rgb(color_as_int(opts.color0))
-active_fg = as_rgb(color_as_int(opts.color1))
+fg = as_rgb(color_as_int(opts.color8))
+bg = as_rgb(color_as_int(opts.color7))
+active_fg = as_rgb(color_as_int(opts.color15))
 
 def draw_tab(
     draw_data: DrawData, screen: Screen, tab: TabBarData,
@@ -37,8 +34,6 @@ def draw_tab(
     screen.cursor.fg = bg
 
     if is_first:
-        screen.cursor.x += 1
-        _do_round(f'{left_round}')
         screen.draw(' ')
     else:
         screen.draw('｜ ')
@@ -52,8 +47,7 @@ def draw_tab(
         _do_title()
 
     if is_last:
-        screen.draw(' ')
-        _do_round(f'{right_round}')
+        screen.draw(' ' * (screen.columns - screen.cursor.x))
     else:
         screen.draw(f' ')
 
