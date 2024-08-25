@@ -42,6 +42,10 @@ window#waybar {
   margin-right: 8px;
 }
 
+#workspaces {
+  margin-left: 8px;
+}
+
 #workspaces button.visible {
   color: @color3;
   font-weight: bold;

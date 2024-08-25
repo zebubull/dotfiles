@@ -25,6 +25,7 @@ go
 grim
 helix
 hyprland
+jdk8-openjdk
 jq
 kitty
 less
