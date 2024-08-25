@@ -7,6 +7,7 @@ brightnessctl
 btop
 cliphist
 cloc
+cups
 dhcpcd
 discord
 fastfetch
@@ -30,7 +31,6 @@ jq
 kitty
 less
 lib32-gamemode
-lib32-vulkan-radeon
 lldb
 lxqt-policykit
 mako

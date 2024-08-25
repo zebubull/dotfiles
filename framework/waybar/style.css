@@ -1,0 +1,53 @@
+@import url("colors.css");
+
+* {
+  font-size: 16px;
+  font-family: "DejaVuSansM Nerd Font";
+  color: @color15;
+}
+
+window#waybar {
+  background-color: alpha(#222222, 0.5);
+}
+
+#mpd, #load, #memory, #network, #window, #clock, #tray, #disk, #workspaces, #battery, #wireplumber {
+    border-bottom: 4px solid @color15;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#mpd, #wireplumber {
+  /* background-color: alpha(@color1, 0.5); */
+  color: @color1;
+}
+
+#network {
+  color: @color2;
+}
+
+#disk, #battery {
+  color: @color3;
+}
+
+#memory {
+  color: @color4;
+}
+
+#load {
+  color: @color5;
+}
+
+#clock {
+  color: @color6;
+  margin-right: 8px;
+}
+
+#workspaces button.visible {
+  color: @color3;
+  font-weight: bold;
+}
+
+#workspaces button.active {
+  color: @color2;
+  font-weight: bold;
+}
