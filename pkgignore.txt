@@ -1,3 +1,4 @@
+amd-ucode
 base
 base-devel
 chromium
@@ -10,6 +11,8 @@ linux
 linux-firmware
 linux-headers
 mesa
+prismlauncher
+ntfs-3g
 nvidia-dkms
 nvidia-settings
 nvidia-utils
