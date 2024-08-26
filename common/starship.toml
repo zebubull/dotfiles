@@ -104,7 +104,7 @@ truncation_symbol = "…/"
 
 [hostname]
 style = "bold fg:black bg:cyan"
-format="[$hostname]($style)"
+format="[ $hostname]($style)"
 ssh_only = false
 disabled = false
 
