@@ -26,7 +26,6 @@ go
 grim
 helix
 hyprland
-jdk8-openjdk
 jq
 kitty
 less
@@ -48,6 +47,7 @@ nvtop
 obs-studio
 openbsd-netcat
 openssh
+pacman-contrib
 picard
 pinta
 pipewire
