@@ -13,7 +13,7 @@
     "network",
     "battery",
     "memory",
-    "load",
+    "cpu",
     "clock"
   ],
   "hyprland/window": {
@@ -35,8 +35,8 @@
   "memory": {
     "format": "  {used}GiB"
   },
-  "load": {
-    "format": "󰍛 {load1}%"
+  "cpu": {
+    "format": "󰍛 {usage}%"
   },
   "group/music": {
     "orientation": "inherit",
@@ -76,5 +76,26 @@
     },
     "format": "{icon}  {capacity}%",
     "format-icons": ["", "", "", "", ""],
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode"          : "month",
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    },
+    "actions":  {
+      "on-click": "shift_up",
+      "on-click-right": "shift_down"
+    }
   }
 }

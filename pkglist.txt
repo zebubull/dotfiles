@@ -37,6 +37,7 @@ man-pages
 mpc
 mpd
 nano
+nasm
 neovim
 net-tools
 networkmanager
@@ -73,7 +74,6 @@ ttf-cousine-nerd
 ttf-dejavu-nerd
 ufw
 unzip
-valgrind
 vulkan-extra-layers
 vulkan-extra-tools
 vulkan-html-docs

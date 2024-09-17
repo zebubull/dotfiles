@@ -10,7 +10,7 @@ window#waybar {
   background-color: alpha(#222222, 0.5);
 }
 
-#mpd, #load, #memory, #network, #window, #clock, #tray, #disk, #workspaces, #battery, #wireplumber {
+#mpd, #cpu, #memory, #network, #window, #clock, #tray, #disk, #workspaces, #battery, #wireplumber {
     border-bottom: 4px solid @color15;
     padding-left: 8px;
     padding-right: 8px;
@@ -33,7 +33,7 @@ window#waybar {
   color: @color4;
 }
 
-#load {
+#cpu {
   color: @color5;
 }
 
