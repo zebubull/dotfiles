@@ -21,7 +21,7 @@
     "rewrite": {
       "(.*) - fish": "> [$1]",
     },
-    "max-length": 50
+    "max-length": 80
   },
   "tray": {
     "show-passive-items": true,
@@ -60,7 +60,7 @@
     }
   },
   "wireplumber": {
-      "format": "{volume}% {icon}",
+      "format": "{volume}% {icon} ",
       "format-muted": "X ",
       "on-click": "qpwgraph",
       "format-icons": ["", "", ""]

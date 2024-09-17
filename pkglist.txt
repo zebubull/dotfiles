@@ -1,13 +1,24 @@
 alsa-utils
+<<<<<<< HEAD
+=======
+asciinema
+atril
+bash-completion
+>>>>>>> refs/remotes/origin/main
 bear
 bluez
+bluez-utils
 brightnessctl
 btop
 cliphist
 cloc
 cups
+<<<<<<< HEAD
 cups-pdf
 discord
+=======
+dhcpcd
+>>>>>>> refs/remotes/origin/main
 fastfetch
 fcitx5
 fcitx5-configtool
@@ -20,31 +31,48 @@ ghostscript
 git
 glfw
 globalprotect-openconnect
+<<<<<<< HEAD
+=======
+glow
+go
+>>>>>>> refs/remotes/origin/main
 grim
+gvfs-smb
 helix
+<<<<<<< HEAD
 hunspell-en_us
+=======
+hunspell
+hunspell-en_us
+hyphen-en
+>>>>>>> refs/remotes/origin/main
 hyprland
-jdk8-openjdk
+jdk21-openjdk
 jq
 kitty
 less
 lib32-gamemode
+<<<<<<< HEAD
 lib32-libcurl-compat
 lib32-libcurl-gnutls
 lib32-openal
 lib32-vulkan-radeon
+=======
+>>>>>>> refs/remotes/origin/main
 libreoffice-fresh
 lldb
 lxqt-policykit
 mako
 man-db
 man-pages
+meson
 mpc
 mpd
 nano
 neovim
 net-tools
 networkmanager
+networkmanager-openconnect
 noto-fonts-cjk
 noto-fonts-emoji
 nss-mdns
@@ -69,6 +97,7 @@ rustup
 samba
 sfml
 slurp
+smbclient
 socat
 starship
 steam

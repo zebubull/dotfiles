@@ -2,7 +2,9 @@ amd-ucode
 base
 base-devel
 chromium
+discord
 intel-ucode
+jdk8-openjdk
 lib32-libglvnd
 lib32-nvidia-utils
 lib32-opencl-nvidia
