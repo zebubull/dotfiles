@@ -74,7 +74,7 @@ config_dirs=(
     # term
     "kitty" "fish"
     # misc
-    "neofetch" "mpd"
+    "fastfetch" "mpd"
 )
 
 config_files=(
