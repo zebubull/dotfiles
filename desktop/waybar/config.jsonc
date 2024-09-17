@@ -9,18 +9,11 @@
     "hyprland/window"
   ],
   "modules-right": [
-    "mpd",
-    "network",
-    "disk",
-    "memory",
-    "load",
+    "group/music",
     "clock"
   ],
   "hyprland/window": {
     "separate-outputs": true,
-    "rewrite": {
-      "(.*) - fish": "> [$1]",
-    },
     "max-length": 50
   },
   "tray": {
@@ -35,8 +28,8 @@
   "memory": {
     "format": "  {used}GiB"
   },
-  "load": {
-    "format": "󰍛 {load1}%"
+  "cpu": {
+    "format": "󰍛 {}%"
   },
   "mpd": {
     "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ｜ {title} by {artist}",
@@ -49,6 +42,20 @@
         "paused": " ",
         "playing": ""
     }
+  },
+  "group/music": {
+    "orientation": "inherit",
+    "modules": [
+      "wireplumber",
+      "mpd"
+    ],
+    "drawer": {},
+  },
+  "wireplumber": {
+      "format": "{volume}% {icon}",
+      "format-muted": "X ",
+      "on-click": "qpwgraph",
+      "format-icons": ["", "", ""]
   },
   "network": {
     "format": "{ipaddr}/{cidr}"

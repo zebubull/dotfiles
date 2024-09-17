@@ -70,7 +70,7 @@ config_dirs=(
 	# desktop stuff
 	"hypr" "mako" "eww" "gtk-3.0" "wal" "rofi" "waybar"
 	# editor
-	"nvim" # "nvim-scheme"
+	  "helix"
     # term
     "kitty" "fish"
     # misc
@@ -86,6 +86,7 @@ config_files=(
     "$HOME/.config/mako/config,$HOME/.cache/wal/colors-mako"
     "$HOME/.config/rofi/config.rasi,$HOME/.cache/wal/colors-rofi-dark.rasi"
     "$HOME/.local/bin/wallpaper,$HOME/.config/dotfiles/scripts/wallpaper"
+    "$HOME/.local/bin/updates,$HOME/.config/dotfiles/scripts/updates"
     "$HOME/.config/starship.toml,$HOME/.config/dotfiles/common/starship.toml"
 )
 

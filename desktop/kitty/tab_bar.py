@@ -5,7 +5,7 @@ from kitty.utils import color_as_int
 opts = get_options()
 
 fg = as_rgb(color_as_int(opts.color8))
-bg = as_rgb(color_as_int(opts.color7))
+bg = as_rgb(color_as_int(opts.color0))
 active_fg = as_rgb(color_as_int(opts.color15))
 
 def draw_tab(
@@ -13,13 +13,6 @@ def draw_tab(
     before: int, max_title_length: int, index: int, is_last: bool,
     extra_data: ExtraData
 ) -> int:
-    def _do_round(text: str):
-        screen.cursor.bg = bg
-        screen.cursor.fg = fg
-        screen.draw(text)
-        screen.cursor.bg = fg
-        screen.cursor.fg = bg
-
     def _do_title():
         if tab.needs_attention:
             screen.draw(f'!{tab.title}!')
@@ -30,8 +23,8 @@ def draw_tab(
     orig_bg = screen.cursor.bg
     is_first = before == 0
 
-    screen.cursor.bg = fg
-    screen.cursor.fg = bg
+    screen.cursor.fg = fg
+    screen.cursor.bg = bg
 
     if is_first:
         screen.draw(' ')

@@ -29,4 +29,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/zebu/\x2elocal/bin
+SETUVAR fish_user_paths:/home/zebu/\x2eflutter\x2dsdk/flutter/bin\x1e/home/zebu/Android/Sdk/platform\x2dtools\x1e/home/zebu/\x2elocal/bin

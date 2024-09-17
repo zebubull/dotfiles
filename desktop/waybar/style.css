@@ -7,18 +7,23 @@
 }
 
 window#waybar {
-  background-color: alpha(#222222, 0.5);
+  background-color: #000;
 }
 
-#mpd, #load, #memory, #network, #window, #clock, #tray, #disk, #workspaces {
-    border-bottom: 4px solid @color15;
+#mpd, #cpu, #memory, #network, #window, #clock, #tray, #disk, #workspaces, #wireplumber {
+    /* border-bottom: 4px solid @color15; */
     padding-left: 8px;
     padding-right: 8px;
 }
 
-#mpd {
+
+#wireplumber {
+  margin-right: 12px;
+}
+
+#mpd, #wireplumber {
   /* background-color: alpha(@color1, 0.5); */
-  color: @color1;
+  /* color: @color1; */
 }
 
 #network {
@@ -33,12 +38,12 @@ window#waybar {
   color: @color4;
 }
 
-#load {
+#cpu {
   color: @color5;
 }
 
 #clock {
-  color: @color6;
+  /* color: @color6; */
   margin-right: 8px;
 }
 
@@ -47,11 +52,11 @@ window#waybar {
 }
 
 #workspaces button.visible {
-  color: @color3;
-  font-weight: bold;
+  /* color: @color3; */
+  /* font-weight: bold; */
 }
 
 #workspaces button.active {
-  color: @color2;
+  /* color: @color2; */
   font-weight: bold;
 }
