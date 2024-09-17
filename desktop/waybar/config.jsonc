@@ -36,8 +36,8 @@
     "artist-len": 20,
     "max-length": 50,
     "on-click": "mpc toggle",
-    "on-scroll-up": "mpc next",
-    "on-scroll-down": "mpc prev",
+    "on-scroll-up": "mpc volume +2",
+    "on-scroll-down": "mpc volume -2",
     "state-icons": {
         "paused": " ",
         "playing": ""
