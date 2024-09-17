@@ -12,8 +12,8 @@
     "group/music",
     "network",
     "battery",
-    "memory",
-    "cpu",
+    // "memory",
+    // "cpu",
     "clock"
   ],
   "hyprland/window": {

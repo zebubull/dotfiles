@@ -19,7 +19,7 @@ success_symbol = '\$'
 error_symbol = '[\$](red)'
 
 [battery]
-format = "$symbol$percentage"
+format = "$symbol$percentage "
 
 [[battery.display]]
 threshold = 100
