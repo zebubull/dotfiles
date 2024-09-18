@@ -60,13 +60,13 @@
     }
   },
   "wireplumber": {
-      "format": "{volume}% {icon} ",
-      "format-muted": "X ",
+      "format": "{symbol}: {volume}",
+      "format-muted": ": MUTED",
       "on-click": "qpwgraph",
       "format-icons": ["", "", ""]
   },
   "network": {
-    "format": "({signalStrength}%) {essid}",
+    "format": "{essid}: {signalStrength}",
     "max-length": 15,
   },
   "battery": {
@@ -74,7 +74,7 @@
         "warning": 30,
         "critical": 15
     },
-    "format": "{icon}  {capacity}%",
+    "format": "BAT1: {capacity}",
     "format-icons": ["", "", "", "", ""],
   },
   "clock": {

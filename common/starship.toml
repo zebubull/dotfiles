@@ -4,9 +4,9 @@ format = '''
 $directory$git_branch$git_status$character
 '''
 
-right_format = '''
-$battery
-'''
+# right_format = '''
+# $battery
+# '''
 
 [directory.substitutions]
 "Documents" = "󰈙 "
