@@ -8,6 +8,7 @@ jdk8-openjdk
 lib32-libglvnd
 lib32-nvidia-utils
 lib32-opencl-nvidia
+lib32-vulkan-radeon
 libglvnd
 linux
 linux-firmware

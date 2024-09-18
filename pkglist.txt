@@ -1,5 +1,6 @@
 atril
 bluez
+bluez-utils
 brightnessctl
 btop
 cliphist
@@ -13,14 +14,17 @@ firefox
 fish
 gamemode
 gdb
-ghostscript
 git
 glfw
 globalprotect-openconnect
 grim
+gvfs-smb
 helix
+hunspell
 hunspell-en_us
+hyphen-en
 hyprland
+jdk21-openjdk
 jq
 kitty
 less
@@ -28,12 +32,12 @@ lib32-gamemode
 lib32-libcurl-compat
 lib32-libcurl-gnutls
 lib32-openal
-lib32-vulkan-radeon
 libreoffice-fresh
 lldb
 mako
 man-db
 man-pages
+meson
 mpc
 mpd
 nano
@@ -41,6 +45,7 @@ nasm
 neovim
 net-tools
 networkmanager
+networkmanager-openconnect
 noto-fonts-cjk
 noto-fonts-emoji
 nss-mdns
@@ -64,6 +69,7 @@ rustup
 samba
 sfml
 slurp
+smbclient
 socat
 starship
 steam
@@ -86,6 +92,7 @@ wl-clipboard
 wlroots
 wofi
 xdg-desktop-portal
+xdg-desktop-portal-gnome
 xdg-desktop-portal-hyprland
 xdg-user-dirs
 yt-dlp
