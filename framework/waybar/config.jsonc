@@ -60,7 +60,7 @@
     }
   },
   "wireplumber": {
-      "format": "{symbol}: {volume}",
+      "format": "{icon}: {volume}",
       "format-muted": ": MUTED",
       "on-click": "qpwgraph",
       "format-icons": ["", "", ""]
