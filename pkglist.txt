@@ -15,7 +15,6 @@ fish
 gamemode
 gdb
 git
-glfw
 globalprotect-openconnect
 grim
 gvfs-smb
@@ -24,7 +23,6 @@ hunspell
 hunspell-en_us
 hyphen-en
 hyprland
-jdk21-openjdk
 jq
 kitty
 less
@@ -32,17 +30,12 @@ lib32-gamemode
 lib32-libcurl-compat
 lib32-libcurl-gnutls
 lib32-openal
-libreoffice-fresh
-lldb
 mako
 man-db
 man-pages
-meson
 mpc
 mpd
 nano
-nasm
-neovim
 net-tools
 networkmanager
 networkmanager-openconnect
@@ -50,11 +43,8 @@ noto-fonts-cjk
 noto-fonts-emoji
 nss-mdns
 nvtop
-obs-studio
-openbsd-netcat
 openssh
 pacman-contrib
-picard
 pinta
 pipewire
 pipewire-pulse
@@ -67,7 +57,6 @@ rofi-wayland
 rust-analyzer
 rustup
 samba
-sfml
 slurp
 smbclient
 socat
@@ -95,5 +84,3 @@ xdg-desktop-portal
 xdg-desktop-portal-gnome
 xdg-desktop-portal-hyprland
 xdg-user-dirs
-yt-dlp
-zig
