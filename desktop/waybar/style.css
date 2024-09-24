@@ -33,23 +33,9 @@ window#waybar {
   margin: 0px 12px 0px 0px;
 }
 
-#workspaces button {
-  color: @gray;
-  background-image: none;
-  border: 0px;
-}
-
-#workspaces button {
-  color: @inactive;
-  background: none;
-}
-
-#workspaces button:hover {
-  color: @hover;
-}
-
-#workspaces button.active {
-  color: @highlight;
+#custom-sep {
+  color: @text;
+  margin: 6px 0px;
 }
 
 #custom-power {
@@ -69,12 +55,30 @@ window#waybar {
   color: @color12;
 }
 
-#custom-sep {
-  color: @text;
-  margin: 6px 0px;
+#workspaces button {
+  color: @gray;
+  background-image: none;
+  border: 0px;
 }
 
-#cpu{
+#workspaces button {
+  color: @inactive;
+  background: none;
+}
+
+#workspaces button:hover {
+  color: @hover;
+}
+
+#workspaces button.active {
+  color: @highlight;
+}
+
+#tray {
+  color: @text;
+}
+
+#cpu {
   color: @color12;
 }
 

@@ -12,7 +12,9 @@
         "mpd"
     ],
     "modules-center": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/sep",
+        "tray"
     ],
     "modules-right": [
         "cpu",
@@ -60,6 +62,9 @@
             "default": "",
             "empty": ""
         }
+    },
+    "tray": {
+        "icon-size": 20
     },
 
     // Right

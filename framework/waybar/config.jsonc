@@ -11,7 +11,9 @@
         "mpd"
     ],
     "modules-center": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/sep",
+        "tray"
     ],
     "modules-right": [
         "network",
@@ -58,6 +60,9 @@
             "default": "",
             "empty": ""
         }
+    },
+    "tray": {
+        "icon-size": 20,
     },
 
     // Right
