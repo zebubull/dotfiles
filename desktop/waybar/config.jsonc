@@ -1,63 +1,76 @@
 {
-  "spacing": 16,
-  "height": 38,
-  "modules-left": [
-    "hyprland/workspaces",
-    "tray",
-  ],
-  "modules-center": [
-    "hyprland/window"
-  ],
-  "modules-right": [
-    "group/music",
-    "clock"
-  ],
-  "hyprland/window": {
-    "separate-outputs": true,
-    "max-length": 50
-  },
-  "tray": {
-    "show-passive-items": true,
-    "icon-size": 24,
-    "spacing": 8,
-  },
-  "disk": {
-    "format": " {percentage_used}%",
-    "path": "/home"
-  },
-  "memory": {
-    "format": "  {used}GiB"
-  },
-  "cpu": {
-    "format": "󰍛 {}%"
-  },
-  "mpd": {
-    "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ｜ {title} by {artist}",
-    "artist-len": 20,
-    "max-length": 50,
-    "on-click": "mpc toggle",
-    "on-scroll-up": "mpc volume +2",
-    "on-scroll-down": "mpc volume -2",
-    "state-icons": {
-        "paused": " ",
-        "playing": ""
-    }
-  },
-  "group/music": {
-    "orientation": "inherit",
-    "modules": [
-      "wireplumber",
-      "mpd"
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 12,
+    "margin-top": 4,
+    "modules-left": [
+        "custom/power",
+        "custom/sep",
+        "wireplumber",
+        "custom/sep",
+        "mpd"
     ],
-    "drawer": {},
-  },
-  "wireplumber": {
-      "format": "{volume}% {icon}",
-      "format-muted": "X ",
-      "on-click": "qpwgraph",
-      "format-icons": ["", "", ""]
-  },
-  "network": {
-    "format": "{ipaddr}/{cidr}"
-  },
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "cpu",
+        "custom/sep",
+        "memory",
+        "custom/sep",
+        "clock"
+    ],
+
+    "custom/sep": {
+        "format": ""
+    },
+
+    // Left
+    "custom/power": {
+        "on-click": "poweroff",
+        "format": ""
+    },
+    "wireplumber": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "on-click": "kitty pulsemixer",
+        "format-icons": ["", "", ""]
+    },
+    "mpd": {
+        "format": "{stateIcon} {title} - {artist}",
+        "max-length": 50,
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },        
+    },
+
+    // Center
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "*": 10
+        },
+        "format-icons": {
+            "active": "",
+            "urgent": "",
+            "default": "",
+            "empty": ""
+        }
+    },
+
+    // Right
+    "cpu": {
+        "interval": 10,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    }
 }

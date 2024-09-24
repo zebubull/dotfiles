@@ -1,62 +1,87 @@
 @import url("colors.css");
 
+@define-color bg @color0;
+@define-color text @color15;
+
+@define-color highlight @color1;
+@define-color inactive @color7;
+@define-color hover @color3;
+
 * {
-  font-size: 16px;
-  font-family: "DejaVuSansM Nerd Font";
-  color: @color15;
+  font-size: 18px;
+  font-family: "DejaVu Sans Mono", "Font Awesome 6 Pro", "DejaVuSansM Nerd Font";
 }
 
 window#waybar {
-  background-color: #000;
+  color: @text;
+  background: none;
 }
 
-#mpd, #cpu, #memory, #network, #window, #clock, #tray, #disk, #workspaces, #wireplumber {
-    /* border-bottom: 4px solid @color15; */
-    padding-left: 8px;
-    padding-right: 8px;
+.modules-left,
+.modules-right,
+.modules-center {
+  background-color: @bg;
+  border-radius: 16px;
+  padding: 0px 16px;
 }
 
-
-#wireplumber {
-  margin-right: 12px;
+.modules-left {
+  margin: 0px 0px 0px 12px;
 }
 
-#mpd, #wireplumber {
-  /* background-color: alpha(@color1, 0.5); */
-  /* color: @color1; */
+.modules-right {
+  margin: 0px 12px 0px 0px;
 }
 
-#network {
-  color: @color2;
+#workspaces button {
+  color: @gray;
+  background-image: none;
+  border: 0px;
 }
 
-#disk {
-  color: @color3;
+#workspaces button {
+  color: @inactive;
+  background: none;
 }
 
-#memory {
-  color: @color4;
-}
-
-#cpu {
-  color: @color5;
-}
-
-#clock {
-  /* color: @color6; */
-  margin-right: 8px;
-}
-
-#workspaces {
-  margin-left: 8px;
-}
-
-#workspaces button.visible {
-  /* color: @color3; */
-  /* font-weight: bold; */
+#workspaces button:hover {
+  color: @hover;
 }
 
 #workspaces button.active {
-  /* color: @color2; */
-  font-weight: bold;
+  color: @highlight;
+}
+
+#custom-power {
+  color: @color10;
+  padding: 0px 6px 0px 0px;
+}
+
+#wireplumber {
+  color: @color11;
+}
+
+#wireplumber.muted {
+  padding: 0px 12px 0px 0px;
+}
+
+#mpd {
+  color: @color12;
+}
+
+#custom-sep {
+  color: @text;
+  margin: 6px 0px;
+}
+
+#cpu{
+  color: @color12;
+}
+
+#memory {
+  color: @color11;
+}
+
+#clock {
+  color: @color10;
 }
