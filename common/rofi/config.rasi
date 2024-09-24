@@ -1,0 +1,56 @@
+#window {
+	border-radius: 16px;
+}
+
+configuration {
+	font: "DejaVu Sans Mono 16";
+	matching: "normal";
+}
+
+@import "theme"
+
+entry {
+	font: "Cousine Nerd Font Mono 32";
+	placeholder: "";
+}
+
+element {
+	orientation: horizontal;
+	children: [element-icon, element-text];
+	spacing: 5px;
+}
+
+window {
+	height: 40%;
+	width: 50%;
+	padding: 0;
+	children: [ horibox ];
+}
+
+horibox {
+	orientation: horizontal;
+	children: [ dummywall, vertbox ];
+}
+
+dummywall {
+	background-image: url("icon.png");
+	height: 100%;
+	width: 20%;
+	margin: 0;
+	expand: false;
+}
+
+vertbox {
+	orientation: vertical;
+	padding: 16;
+	children: [ inputbar, message, listview ];
+}
+
+dummy {
+	expand: true;
+}
+
+inputbar {
+	padding: 120 0 0 0;
+	children: [dummy, entry, dummy];
+}
