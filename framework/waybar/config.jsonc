@@ -1,101 +1,76 @@
 {
-  "spacing": 16,
-  "height": 38,
-  "modules-left": [
-    "hyprland/workspaces",
-    "tray",
-  ],
-  "modules-center": [
-    "hyprland/window"
-  ],
-  "modules-right": [
-    "group/music",
-    "network",
-    "battery",
-    // "memory",
-    // "cpu",
-    "clock"
-  ],
-  "hyprland/window": {
-    "separate-outputs": true,
-    "rewrite": {
-      "(.*) - fish": "> [$1]",
-    },
-    "max-length": 80
-  },
-  "tray": {
-    "show-passive-items": true,
-    "icon-size": 24,
-    "spacing": 8,
-  },
-  "disk": {
-    "format": " {percentage_used}%",
-    "path": "/home"
-  },
-  "memory": {
-    "format": "  {used}GiB"
-  },
-  "cpu": {
-    "format": "󰍛 {usage}%"
-  },
-  "group/music": {
-    "orientation": "inherit",
-    "modules": [
-      "wireplumber",
-      "mpd"
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 12,
+    "modules-left": [
+        "custom/power",
+        "custom/sep",
+        "wireplumber",
+        "custom/sep",
+        "mpd"
     ],
-    "drawer": {},
-  },
-  "mpd": {
-    // "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} ｜ {title} by {artist}",
-    "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S}",
-    "artist-len": 20,
-    "max-length": 50,
-    "on-click": "mpc toggle",
-    "on-scroll-up": "mpc next",
-    "on-scroll-down": "mpc prev",
-    "state-icons": {
-        "paused": " ",
-        "playing": ""
-    }
-  },
-  "wireplumber": {
-      "format": "{icon}: {volume}",
-      "format-muted": ": MUTED",
-      "on-click": "qpwgraph",
-      "format-icons": ["", "", ""]
-  },
-  "network": {
-    "format": "{essid}: {signalStrength}",
-    "max-length": 15,
-  },
-  "battery": {
-    "states": {
-        "warning": 30,
-        "critical": 15
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "network",
+        "custom/sep",
+        "battery",
+        "custom/sep",
+        "clock"
+    ],
+
+    "custom/sep": {
+        "format": ""
     },
-    "format": "BAT1: {capacity}",
-    "format-icons": ["", "", "", "", ""],
-  },
-  "clock": {
-    "format": "{:%H:%M}",
-    "format-alt": "{:%H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode"          : "month",
-      "weeks-pos"     : "right",
-      "on-scroll"     : 1,
-      "format": {
-        "months":     "<span color='#ffead3'><b>{}</b></span>",
-        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+
+    // Left
+    "custom/power": {
+        "on-click": "poweroff",
+        "format": ""
+    },
+    "wireplumber": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "on-click": "kitty pulsemixer",
+        "format-icons": ["", "", ""]
+    },
+    "mpd": {
+        "format": "{stateIcon} {title} - {artist}",
+        "max-length": 50,
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },        
+    },
+
+    // Center
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "eDP-1": 10
+        },
+        "format-icons": {
+            "active": "",
+            "urgent": "",
+            "default": "",
+            "empty": ""
         }
     },
-    "actions":  {
-      "on-click": "shift_up",
-      "on-click-right": "shift_down"
+
+    // Right
+    "network": {
+        "format-wifi": "  {essid} ({signalStrength}%)"
+    },
+    "battery": {
+        "interval": 30,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""]
     }
-  }
 }
