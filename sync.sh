@@ -84,7 +84,7 @@ config_files=(
     "$HOME/.config/kitty/current-theme.conf,$HOME/.cache/wal/colors-kitty.conf"
     "$HOME/.config/hypr/colors-hyprland.conf,$HOME/.cache/wal/colors-hyprland.conf"
     "$HOME/.config/mako/config,$HOME/.cache/wal/colors-mako"
-    "$HOME/.config/rofi/theme.rasi,$HOME/.cache/wal/colors-rofi-dark.rasi"
+    "$HOME/.config/rofi/theme.rasi,$HOME/.cache/wal/colors-rofi.rasi"
     "$HOME/.local/bin/wallpaper,$HOME/.config/dotfiles/scripts/wallpaper"
     "$HOME/.local/bin/updates,$HOME/.config/dotfiles/scripts/updates"
     "$HOME/.config/starship.toml,$HOME/.config/dotfiles/common/starship.toml"
