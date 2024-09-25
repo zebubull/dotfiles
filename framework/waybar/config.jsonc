@@ -8,6 +8,8 @@
         "custom/sep",
         "wireplumber",
         "custom/sep",
+        "mpd#control",
+        "custom/sep",
         "mpd"
     ],
     "modules-center": [
@@ -37,6 +39,10 @@
         "format-muted": "",
         "on-click": "kitty pulsemixer",
         "format-icons": ["", "", ""]
+    },
+    "mpd#control": {
+        "format": "  {volume}% {elapsedTime:%M:%S}:{totalTime:%M:%S}",
+        "format-paused": " "
     },
     "mpd": {
         "format": "{stateIcon} {title} - {artist}",
