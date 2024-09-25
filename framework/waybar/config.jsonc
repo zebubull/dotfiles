@@ -18,6 +18,10 @@
         "tray"
     ],
     "modules-right": [
+        "cpu",
+        "custom/sep",
+        "memory",
+        "custom/sep",
         "network",
         "custom/sep",
         "battery",
@@ -72,6 +76,16 @@
     },
 
     // Right
+    "cpu": {
+        "interval": 10,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    },
     "network": {
         "format-wifi": "  {essid} ({signalStrength}%)"
     },
@@ -81,7 +95,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
         "format-icons": ["", "", "", "", ""]
     }
 }

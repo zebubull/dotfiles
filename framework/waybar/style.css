@@ -79,6 +79,14 @@ window#waybar {
   color: @text;
 }
 
+#cpu {
+  color: @color14;
+}
+
+#memory {
+  color: @color13;
+}
+
 #network {
   color: @color12;
 }
