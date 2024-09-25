@@ -9,7 +9,7 @@
 
 * {
   font-size: 18px;
-  font-family: "DejaVu Sans Mono", "Font Awesome 6 Pro", "DejaVuSansM Nerd Font";
+  font-family: "DejaVu Sans Mono", "Font Awesome 6", "DejaVuSansM Nerd Font";
 }
 
 window#waybar {
@@ -21,8 +21,8 @@ window#waybar {
 .modules-right,
 .modules-center {
   background-color: @bg;
-  border-radius: 16px;
-  padding: 0px 16px;
+  border-radius: 20px;
+  padding: 0px 24px;
 }
 
 .modules-left {

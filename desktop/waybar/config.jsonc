@@ -9,19 +9,21 @@
         "custom/sep",
         "wireplumber",
         "custom/sep",
+        "mpd#control",
+        "custom/sep",
         "mpd"
     ],
     "modules-center": [
         "hyprland/workspaces",
         "custom/sep",
-        "tray"
+        "tray",
     ],
     "modules-right": [
         "cpu",
         "custom/sep",
         "memory",
         "custom/sep",
-        "clock"
+        "clock",
     ],
 
     "custom/sep": {
@@ -33,28 +35,37 @@
         "on-click": "poweroff",
         "format": ""
     },
+    "mpd#control": {
+        "format": "  {volume}% {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+        "format-paused": " ",
+        "on-scroll-up": "mpc volume +1",
+        "on-scroll-down": "mpc volume -1",
+    },
+    "mpd": {
+        "format": "{stateIcon} {title} - {artist}",
+        "format-paused": "{stateIcon} {title} - {artist}",
+        "max-length": 50,
+        "on-click": "mpc toggle",
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },        
+    },
     "wireplumber": {
         "format": "{icon}  {volume}%",
         "format-muted": "",
         "on-click": "kitty pulsemixer",
         "format-icons": ["", "", ""]
     },
-    "mpd": {
-        "format": "{stateIcon} {title} - {artist}",
-        "max-length": 50,
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },        
-    },
 
     // Center
     "hyprland/workspaces": {
-        "all-outputs": true,
+        "all-outputs": false,
         "format": "{icon}",
         "on-click": "activate",
         "persistent-workspaces": {
-            "*": 10
+            "DP-2": [1,2,3,4,5,6,7,8,9,10],
+            "DP-3": [1,2,3,4,5,6,7,8,9,10],
         },
         "format-icons": {
             "active": "",
@@ -78,5 +89,5 @@
         "interval": 30,
         "format": " {}%",
         "max-length": 10
-    }
+    },
 }
