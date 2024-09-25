@@ -113,6 +113,8 @@
             "keyColor": "33",
         },
         "break",
+        "colors",
+        "break",
         "break",
     ]
 }
