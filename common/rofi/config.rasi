@@ -3,11 +3,20 @@
 }
 
 configuration {
-	font: "DejaVu Sans Mono 16";
+	font: "Cuisine Nerd Font Mono 20";
 	matching: "normal";
+	sort: true;
+	sorting-method: "fzf";
+	disable-history: true;
 }
 
 @import "theme"
+
+
+#textbox-sep {
+    background-color: transparent;
+    text-color: @normal-foreground;
+}
 
 entry {
 	font: "Cousine Nerd Font Mono 32";
@@ -53,4 +62,15 @@ dummy {
 inputbar {
 	padding: 120 0 0 0;
 	children: [dummy, entry, dummy];
+}
+
+element {
+	orientation: horizontal;
+	spacing: 10px;
+	children: [ element-icon, textbox-sep, element-text ];
+}
+
+textbox-sep {
+	expand: false;
+	content: "";
 }
