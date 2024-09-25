@@ -3,9 +3,9 @@
 @define-color bg @color0;
 @define-color text @color15;
 
-@define-color highlight @color1;
+@define-color highlight @color2;
 @define-color inactive @color7;
-@define-color hover @color3;
+@define-color hover @color6;
 
 * {
   font-size: 18px;
@@ -23,6 +23,7 @@ window#waybar {
 .modules-center {
   background-color: @bg;
   border-radius: 16px;
+  border: 2px solid @color1;
   padding: 0px 16px;
 }
 
