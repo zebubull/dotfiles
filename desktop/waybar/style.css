@@ -22,7 +22,7 @@ window#waybar {
 .modules-center {
   background-color: @bg;
   border-radius: 20px;
-  border: 2px solid @color1;
+  border: 2px solid @color6;
   padding: 0px 24px;
 }
 
