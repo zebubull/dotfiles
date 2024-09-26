@@ -1,3 +1,4 @@
+atril
 bluez
 bluez-utils
 brightnessctl
@@ -55,7 +56,6 @@ ttf-dejavu-nerd
 ttf-font-awesome
 ufw
 unzip
-vulkan-extra-tools
 waybar
 wget
 wireplumber
