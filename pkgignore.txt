@@ -48,3 +48,5 @@ hunspell-en_us
 hypen-en
 
 samba
+
+corectrl

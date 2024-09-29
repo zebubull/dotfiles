@@ -20,6 +20,7 @@ jq
 kitty
 less
 lib32-gamemode
+lxqt-policykit
 mako
 man-db
 man-pages
