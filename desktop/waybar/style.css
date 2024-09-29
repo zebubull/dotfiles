@@ -3,7 +3,7 @@
 @define-color bg @color0;
 @define-color text @color15;
 
-@define-color highlight @color1;
+@define-color highlight @color6;
 @define-color inactive @color7;
 @define-color hover @color3;
 
