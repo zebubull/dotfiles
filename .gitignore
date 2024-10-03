@@ -1,5 +1,6 @@
 **/mpd/database
 **/mpd/state
+**/mpd/playlist/
 
 **/eww/colors.scss
 **/kitty/current-theme.conf
