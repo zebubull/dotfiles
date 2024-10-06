@@ -3,9 +3,14 @@
 @define-color bg @color0;
 @define-color text @color15;
 
-@define-color highlight @color4;
+@define-color highlight @color8;
 @define-color inactive @color7;
 @define-color hover @color3;
+
+@define-color bar1 @color1;
+@define-color bar2 @color2;
+@define-color bar3 @color3;
+@define-color bar4 @color5;
 
 * {
   font-size: 18px;
@@ -40,20 +45,24 @@ window#waybar {
 }
 
 #custom-power {
-  color: @color10;
+  color: @bar1;
   padding: 0px 6px 0px 0px;
 }
 
 #wireplumber {
-  color: @color11;
+  color: @bar2;
 }
 
 #wireplumber.muted {
   padding: 0px 12px 0px 0px;
 }
 
+#mpd.control {
+  color: @bar3;
+}
+
 #mpd {
-  color: @color12;
+  color: @bar4;
 }
 
 #workspaces button {
@@ -80,13 +89,13 @@ window#waybar {
 }
 
 #cpu {
-  color: @color12;
+  color: @bar3;
 }
 
 #memory {
-  color: @color11;
+  color: @bar2;
 }
 
 #clock {
-  color: @color10;
+  color: @bar1;
 }
