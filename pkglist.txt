@@ -8,6 +8,8 @@ cups
 fastfetch
 firefox
 fish
+flatpak
+freecad
 gamemode
 gdb
 git
