@@ -6,7 +6,7 @@ if status is-interactive
 end
 
 fish_add_path ~/.local/bin
-set EDITOR helix
+set -x EDITOR helix
 source ~/.config/fish/secrets.fish
 
 starship init fish | source
