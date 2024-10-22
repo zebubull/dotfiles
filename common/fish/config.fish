@@ -3,6 +3,7 @@ if status is-interactive
     alias userctl="systemctl --user"
     alias neofetch="fastfetch"
     alias l="ll"
+    alias mount="mount -o uid=zebu,gid=users"
 end
 
 fish_add_path ~/.local/bin
