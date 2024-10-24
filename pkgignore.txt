@@ -50,3 +50,5 @@ hypen-en
 samba
 
 corectrl
+freecad
+flatpak
