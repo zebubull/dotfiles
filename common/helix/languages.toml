@@ -5,9 +5,13 @@ indent = { tab-width = 4, unit = "    " }
 [[language]]
 name = "c"
 indent = { tab-width = 4, unit = "    " }
+file-types = [ "c", "h"]
+auto-format = true
+formatter = { command = "clang-format" }
 
 [[language]]
 name = "cpp"
+file-types = ["cpp", "cxx", "cc", "hpp"]
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
