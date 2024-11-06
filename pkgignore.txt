@@ -52,3 +52,6 @@ samba
 corectrl
 freecad
 flatpak
+
+nethack
+arduino-ide

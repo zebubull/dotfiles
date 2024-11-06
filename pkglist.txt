@@ -3,6 +3,7 @@ bluez
 bluez-utils
 brightnessctl
 btop
+clang
 cliphist
 cups
 fastfetch
