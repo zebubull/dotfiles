@@ -7,6 +7,7 @@ if status is-interactive
 end
 
 fish_add_path ~/.local/bin
+fish_add_path ~/.cargo/bin
 set -x EDITOR helix
 source ~/.config/fish/secrets.fish
 
