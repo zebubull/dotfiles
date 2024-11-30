@@ -55,3 +55,4 @@ flatpak
 
 nethack
 arduino-ide
+krita
