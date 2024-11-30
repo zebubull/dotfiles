@@ -52,8 +52,8 @@
         "format": "{stateIcon} {title} - {artist}",
         "max-length": 50,
         "state-icons": {
-            "paused": "",
-            "playing": ""
+            "paused": "",
+            "playing": ""
         },        
     },
 
