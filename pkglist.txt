@@ -11,11 +11,11 @@ fish
 gamemode
 gdb
 git
-globalprotect-openconnect
 grim
 helix
 hyphen-en
 hyprland
+imagemagick
 jq
 kitty
 less
@@ -28,7 +28,6 @@ mpc
 mpd
 net-tools
 networkmanager
-networkmanager-openconnect
 noto-fonts-cjk
 noto-fonts-emoji
 nvtop
@@ -56,7 +55,6 @@ ttf-cousine-nerd
 ttf-dejavu-nerd
 ttf-font-awesome
 ufw
-unzip
 waybar
 wget
 wireplumber
@@ -67,4 +65,3 @@ xdg-desktop-portal
 xdg-desktop-portal-gnome
 xdg-desktop-portal-hyprland
 xdg-user-dirs
-zig

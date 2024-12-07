@@ -60,8 +60,23 @@ link_file() {
         fskipped=$((fskipped+1))
         return
     fi
-    # in case we copy to /etc
-     sudo ln -s "$1" "$2"
+    sudo ln -s "$1" "$2"
+    echo "Installed $2 (from $1)"
+    fcount=$((fcount+1))
+}
+
+link_file_su() {
+    if [[ -L "$2" ]]; then
+        echo "Link to $2 (from $1) already exists, skipping."
+        fskipped=$((fskipped+1))
+        return
+    fi
+    if [[ -f "$2" ]]; then
+        echo "File $2 (from $1) already exists, skipping."
+        fskipped=$((fskipped+1))
+        return
+    fi
+    sudo ln -s "$1" "$2"
     echo "Installed $2 (from $1)"
     fcount=$((fcount+1))
 }
@@ -78,7 +93,6 @@ config_dirs=(
 )
 
 config_files=(
-    "/etc/pacman.d/hooks/pkglist.hook,$HOME/.config/dotfiles/pacman/pkglist.hook"
     "$HOME/.config/mpd-notification.conf,$HOME/.config/dotfiles/mpd-notification/mpd-notification.conf"
     "$HOME/.config/eww/colors.scss,$HOME/.cache/wal/colors.scss"
     "$HOME/.config/kitty/current-theme.conf,$HOME/.cache/wal/colors-kitty.conf"
@@ -87,7 +101,12 @@ config_files=(
     "$HOME/.config/rofi/theme.rasi,$HOME/.cache/wal/colors-rofi.rasi"
     "$HOME/.local/bin/wallpaper,$HOME/.config/dotfiles/scripts/wallpaper"
     "$HOME/.local/bin/updates,$HOME/.config/dotfiles/scripts/updates"
+    "$HOME/.local/bin/aur,$HOME/.config/dotfiles/scripts/aur"
     "$HOME/.config/starship.toml,$HOME/.config/dotfiles/common/starship.toml"
+)
+
+config_files_su=(
+    "/etc/pacman.d/hooks/pkglist.hook,$HOME/.config/dotfiles/pacman/pkglist.hook"
 )
 
 mkdir -p "/etc/pacman.d/hooks"
@@ -102,6 +121,13 @@ for target in ${config_files[@]}; do
     in=${split[1]}
     out=${split[0]}
     link_file "$in" "$out"
+done
+
+for target in ${config_files_su[@]}; do
+    IFS=',' read -ra split <<< "$target"
+    in=${split[1]}
+    out=${split[0]}
+    link_file_su "$in" "$out"
 done
 
 if ! [[ -f "pkgignore.txt" ]]; then
