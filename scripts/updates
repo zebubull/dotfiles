@@ -2,7 +2,10 @@
 
 checkupdates
 if [[ $? == 0 ]]; then
-  notify-send 'Updates Available' 'Run pacman -Syu to install available updates'
-else
-  notify-send 'No Updates Available' 'All installed packages are up-to-date'
+  notify-send -u critical 'Updates Available' 'Run pacman -Syu to install available updates'
+fi
+
+aur check
+if [[ $? == 0 ]]; then
+  notify-send -u critical 'AUR Updates Available' 'Run aur check to view available updates'
 fi
