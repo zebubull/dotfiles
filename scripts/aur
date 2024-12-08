@@ -76,7 +76,7 @@ class RemotePackage(Package):
             # remove old build artifacts
             print("removing old build artifacts")
             for file in os.listdir("."):
-                if ".pkg.tar.zst" in file:
+                if ".pkg.tar.zst" in file or ".tar.gz" in file:
                     os.remove(file)
         else:
             # if this package hasn't been cloned before, then clone it
@@ -166,7 +166,7 @@ def check_packages():
 def search_for_package(query: str) -> None:
     """ search the AUR with `query` and print every package """
     # see arch wiki for more info
-    endpoint = f"search/{query}"
+    endpoint = f"search/{query.replace(' ', '%20')}"
     packages = aur_rpc_request(endpoint)
     for pkg in packages:
         print(pkg)
@@ -227,7 +227,7 @@ def update_package(name: str):
 
     # confirm and update the package
     print(f"update available  {local}->{remote.version}")
-    confirm_package_install()
+    confirm_package_install(remote)
     # install works as update because they are technically the same thing
     remote.install()
 
