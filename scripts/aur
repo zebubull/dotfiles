@@ -1,4 +1,191 @@
-#!/usr/bin/env fish
+#!/usr/bin/env python3
 
-source ~/.config/fish/functions/aur.fish
-__aur $argv
+from urllib import request
+import subprocess
+import json
+import os
+import sys
+from typing import List, Tuple
+
+def print_usage():
+    print(f"Usage: {sys.argv[0].split('/')[-1]} [subcommand]")
+    print("")
+    print("Subcommands:")
+    print("\tcheck:           check for out-of-date packages from the AUR")
+    print("\tget:             install a package from the AUR")
+    print("\thelp:            print this message")
+    print("\tsearch QUERY...: search for a package on the AUR")
+    print("\tupdate PACKAGE:  update an installed package from the AUR")
+    exit(1)
+
+class Package:
+    def __init__(self, name: str, version: str):
+        self.name = name
+        self.version = version
+
+    def __repr__(self):
+        return f"{self.name} {self.version}"
+
+class RemotePackage(Package):
+    def __init__(self, json: any):
+        super().__init__(json["Name"], json["Version"])
+        self.desc = json["Description"]
+
+    def newer(self, local: Package) -> bool:
+        return self.version != local.version
+
+    def install(self):
+        home = os.getenv("HOME")
+        if not os.path.exists(f"{home}/.aur"):
+            os.makedirs(f"{home}/.aur")
+        os.chdir(f"{home}/.aur")
+
+        if os.path.exists(self.name):
+            os.chdir(self.name)
+            print("fetching latest version from remote...")
+            os.system("git fetch")
+            os.system("git merge")
+            print("removing old build artifacts")
+            for file in os.listdir("."):
+                if ".pkg.tar.zst" in file:
+                    os.remove(file)
+        else:
+            print("fetching package from AUR")
+            os.system(f"git clone https://aur.archlinux.org/{self.name}.git")
+            os.chdir(self.name)
+
+        os.system("makepkg -sf")
+        artifacts = [f for f in os.listdir(".") if ".pkg.tar.zst" in f]
+        os.system(f"sudo pacman -U {' '.join(artifacts)}")
+
+    def __repr__(self):
+        return f"{self.name} {self.version}:\n\t{self.desc}"
+
+def aur_rpc_request(endpoint: str) -> List[RemotePackage]:
+    print('checking remote packages...')
+    r = request.urlopen(f'https://aur.archlinux.org/rpc/v5/{endpoint}')
+    js = json.loads(r.read())
+    if js['type'] == 'error':
+        print("failed to query AUR...")
+        exit(1)
+
+    pkgs = []
+    for info in js['results']:
+        pkgs.append(RemotePackage(info))
+    return pkgs
+
+def get_remote_info(pkgs: List[Package]) -> List[RemotePackage]:
+    if len(pkgs) == 0:
+        return []
+
+    names = [pkg.name for pkg in pkgs]
+    endpoint = f"info?arg[]={'&arg[]='.join(names)}"
+    return aur_rpc_request(endpoint)
+
+def get_installed_packages() -> List[Package]:
+    print('checking installed packages...')
+    proc = subprocess.run(["pacman", "-Qm"], capture_output=True)
+    pkgs = []
+    for line in proc.stdout.splitlines():
+        line = line.decode('utf-8')
+        if "-debug " in line:
+            continue
+        name, ver = line.split(" ")
+        pkgs.append(Package(name, ver))
+
+    return pkgs
+
+def get_old_packages() -> List[Tuple[Package, RemotePackage]]:
+    packages = get_installed_packages()
+    info = get_remote_info(packages)
+
+    old = []
+    for installed, remote in zip(packages, info):
+        if installed.version != remote.version:
+            old.append((installed, remote))
+
+    return old
+
+def check_packages():
+    old = get_old_packages()
+    if len(old) == 0:
+        exit(1)
+
+    for installed, remote in old:
+            print(f"{installed}->{remote.version}")
+
+def search_for_package(query: str) -> None:
+    endpoint = f"search/{query}"
+    packages = aur_rpc_request(endpoint)
+    for pkg in packages:
+        print(pkg)
+
+def confirm_package_install(pkg: Package):
+    print("")
+    print(f"Packages (2) {pkg.name}-{pkg.version}  {pkg.name}-debug-{pkg.version}")
+    print("")
+
+    resp = input(":: Proceed with installation? [Y/n] ")
+    if len(resp) > 0 and resp[0] == 'n':
+        print("cancelling installation...")
+        exit(0)
+
+def get_package(name: str):
+    remote = aur_rpc_request(f"info?arg[]={name}")[0]
+    installed = get_installed_packages()
+
+    for pkg in installed:
+        if remote.name == pkg.name:
+            print(f"package '{name}' will be reinstalled...")
+
+    confirm_package_install(remote)
+    remote.install()
+
+def update_package(name: str):
+    remote = aur_rpc_request(f"info?arg[]={name}")[0]
+    installed = get_installed_packages()
+
+    matches = [i for i in installed if name == i.name]
+    if len(matches) == 0:
+        print("package does not exist or is not from the AUR")
+        exit(1)
+
+    if len(matches) > 1:
+        print("unable to determine which package to install")
+        exit(1)
+
+    local = matches[0]
+    if not remote.newer(local):
+        print(f"{local} is up-to-date")
+        exit(1)
+
+    print(f"update available  {local}->{remote.version}")
+    confirm_package_install()
+    remote.install()
+
+def ensure_arg(count: int):
+    if len(sys.argv) < 2:
+        print_usage()
+
+def main():
+    ensure_arg(2)
+    subcommand = sys.argv[1]
+
+    if subcommand == "check":
+        check_packages()
+    elif subcommand == "help":
+        print_usage()
+    elif subcommand == "search":
+        ensure_arg(3)
+        search_for_package(" ".join(sys.argv[2:]))
+    elif subcommand == "get":
+        ensure_arg(3)
+        get_package(sys.argv[2])
+    elif subcommand == "update":
+        ensure_arg(3)
+        update_package(sys.argv[2])
+    else:
+        print_usage()
+
+if __name__ == '__main__':
+    main()

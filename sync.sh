@@ -60,7 +60,7 @@ link_file() {
         fskipped=$((fskipped+1))
         return
     fi
-    sudo ln -s "$1" "$2"
+    ln -s "$1" "$2"
     echo "Installed $2 (from $1)"
     fcount=$((fcount+1))
 }

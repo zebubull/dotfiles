@@ -187,6 +187,7 @@ function __aur_install_package
         echo "removing old build artifacts..."
         rm *.pkg.tar.zst
     else
+        echo "fetching package from https://aur.archlinux.org/$argv.git"
         git clone "https://aur.archlinux.org/$argv.git"
         cd $argv
     end

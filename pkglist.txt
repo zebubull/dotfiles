@@ -38,6 +38,7 @@ pipewire
 pipewire-pulse
 playerctl
 pulsemixer
+python-lsp-server
 qpwgraph
 qt5-wayland
 ripgrep
