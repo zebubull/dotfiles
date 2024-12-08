@@ -1,5 +1,26 @@
 #!/usr/bin/env python3
 
+# aur.py - a collection of simple AUR utilities in one python script.
+#
+# Copyright (c) 2024 zebubull
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the “Software”), to deal in
+# the Software without restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+# Software, and to permit persons to whom the Software is furnished to do so, subject
+# to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+# PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 from urllib import request
 import subprocess
 import json
@@ -8,6 +29,7 @@ import sys
 from typing import List, Tuple
 
 def print_usage():
+    """ print the usage of the program and exit """
     print(f"Usage: {sys.argv[0].split('/')[-1]} [subcommand]")
     print("")
     print("Subcommands:")
@@ -32,62 +54,89 @@ class RemotePackage(Package):
         self.desc = json["Description"]
 
     def newer(self, local: Package) -> bool:
+        """ check if this package has a different version than the locally installed package. """
         return self.version != local.version
 
     def install(self):
+        """ install this package """
+        # create (if it doesn't exist) the ~/.aur directory and go into it
         home = os.getenv("HOME")
         if not os.path.exists(f"{home}/.aur"):
             os.makedirs(f"{home}/.aur")
         os.chdir(f"{home}/.aur")
 
         if os.path.exists(self.name):
+            # if this package has already been cloned before
+            # go into the directory and update it
             os.chdir(self.name)
             print("fetching latest version from remote...")
             os.system("git fetch")
             os.system("git merge")
+
+            # remove old build artifacts
             print("removing old build artifacts")
             for file in os.listdir("."):
                 if ".pkg.tar.zst" in file:
                     os.remove(file)
         else:
+            # if this package hasn't been cloned before, then clone it
+            # and enter the directory
             print("fetching package from AUR")
             os.system(f"git clone https://aur.archlinux.org/{self.name}.git")
             os.chdir(self.name)
 
+        # build the package and install the build artifacts
         os.system("makepkg -sf")
         artifacts = [f for f in os.listdir(".") if ".pkg.tar.zst" in f]
-        os.system(f"sudo pacman -U {' '.join(artifacts)}")
+        os.system(f"sudo pacman --noconfirm -U {' '.join(artifacts)}")
 
     def __repr__(self):
         return f"{self.name} {self.version}:\n\t{self.desc}"
 
 def aur_rpc_request(endpoint: str) -> List[RemotePackage]:
+    """ make a request to the AUR RPC api at `endpoint` and return the
+        packages received. if an error occurs, print a message and exit
+        the program. """
+    # make the request and parse the JSON response
     print('checking remote packages...')
     r = request.urlopen(f'https://aur.archlinux.org/rpc/v5/{endpoint}')
     js = json.loads(r.read())
+    # type 'error' means the request failed, don't bother to find out the
+    # reason and just exit... probably should have a better message but i'm lazy
     if js['type'] == 'error':
         print("failed to query AUR...")
         exit(1)
 
+    # return all the packages
     pkgs = []
     for info in js['results']:
         pkgs.append(RemotePackage(info))
     return pkgs
 
 def get_remote_info(pkgs: List[Package]) -> List[RemotePackage]:
+    """ get the remote info for each package in `pkgs` """
+    # extra speedy if there are no remotes
     if len(pkgs) == 0:
         return []
 
+    # make the rpc request for each package in the list
+    # see arch wiki for more info
     names = [pkg.name for pkg in pkgs]
     endpoint = f"info?arg[]={'&arg[]='.join(names)}"
     return aur_rpc_request(endpoint)
 
 def get_installed_packages() -> List[Package]:
+    """ get a list of every installed AUR package """
+    # i'm too dumb to figure out libalpm so parse the output of pacman -Qm
     print('checking installed packages...')
     proc = subprocess.run(["pacman", "-Qm"], capture_output=True)
     pkgs = []
     for line in proc.stdout.splitlines():
+        # python gets angry if this is left as a bytestring
         line = line.decode('utf-8')
+        # ignore debug packages because they're stupid. this tries
+        # to avoid packages that have debug in the name by making it
+        # only match at the end of the package name.
         if "-debug " in line:
             continue
         name, ver = line.split(" ")
@@ -96,78 +145,99 @@ def get_installed_packages() -> List[Package]:
     return pkgs
 
 def get_old_packages() -> List[Tuple[Package, RemotePackage]]:
-    packages = get_installed_packages()
-    info = get_remote_info(packages)
+    """ get a list of all outdated AUR packages """
+    # get all installed packages and their corresponding remote info
+    locals = get_installed_packages()
+    remotes = get_remote_info(locals)
 
-    old = []
-    for installed, remote in zip(packages, info):
-        if installed.version != remote.version:
-            old.append((installed, remote))
-
-    return old
+    # return every package where the remote is newer than the local
+    return [(local, remote) for local, remote in zip(locals, remotes) if remote.newer(local)]
 
 def check_packages():
+    """ print every AUR package that needs an update """
     old = get_old_packages()
+    # extra speedy if there are no updates
     if len(old) == 0:
         exit(1)
-
+    
     for installed, remote in old:
             print(f"{installed}->{remote.version}")
 
 def search_for_package(query: str) -> None:
+    """ search the AUR with `query` and print every package """
+    # see arch wiki for more info
     endpoint = f"search/{query}"
     packages = aur_rpc_request(endpoint)
     for pkg in packages:
         print(pkg)
 
 def confirm_package_install(pkg: Package):
+    """ confirm the install of `pkg` and exit if the user declines """
+    # fake pacman message because it looks fancy. probably kind accurate (so far)
     print("")
     print(f"Packages (2) {pkg.name}-{pkg.version}  {pkg.name}-debug-{pkg.version}")
     print("")
 
     resp = input(":: Proceed with installation? [Y/n] ")
+    # anything other than 'n' is a yes
     if len(resp) > 0 and resp[0] == 'n':
         print("cancelling installation...")
         exit(0)
 
 def get_package(name: str):
+    """ attempt to install the package from the AUR with `name `"""
+    # aur_rpc_request will exit if the package doesn't exist
     remote = aur_rpc_request(f"info?arg[]={name}")[0]
-    installed = get_installed_packages()
 
+    # print a warning if the package is already installed
+    installed = get_installed_packages()
     for pkg in installed:
         if remote.name == pkg.name:
             print(f"package '{name}' will be reinstalled...")
 
+    # confirm and install the package
     confirm_package_install(remote)
     remote.install()
 
 def update_package(name: str):
-    remote = aur_rpc_request(f"info?arg[]={name}")[0]
+    """ attempt to update a package from the AUR with `name`.
+        identical to get_package, except this ensures the package is already
+        installed and actually has an update available. """
+    # make sure the package is actually installed
     installed = get_installed_packages()
-
     matches = [i for i in installed if name == i.name]
     if len(matches) == 0:
         print("package does not exist or is not from the AUR")
         exit(1)
 
+    # if (for some reason) more than one installed package has the given name,
+    # then error and exit
     if len(matches) > 1:
         print("unable to determine which package to install")
         exit(1)
 
+    # get the remote package
+    remote = aur_rpc_request(f"info?arg[]={name}")[0]
+
+    # error if the local package is up to date
     local = matches[0]
     if not remote.newer(local):
         print(f"{local} is up-to-date")
         exit(1)
 
+    # confirm and update the package
     print(f"update available  {local}->{remote.version}")
     confirm_package_install()
+    # install works as update because they are technically the same thing
     remote.install()
 
 def ensure_arg(count: int):
+    """ make sure that at least `count` arguments have been provided """
     if len(sys.argv) < 2:
         print_usage()
 
 def main():
+    # ensure the user supplied a subcommand and run the appropriate function
     ensure_arg(2)
     subcommand = sys.argv[1]
 
@@ -176,6 +246,7 @@ def main():
     elif subcommand == "help":
         print_usage()
     elif subcommand == "search":
+        # join all arguments past the subcommand for convenience
         ensure_arg(3)
         search_for_package(" ".join(sys.argv[2:]))
     elif subcommand == "get":
