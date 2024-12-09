@@ -1,30 +1,49 @@
 @import url("colors.css");
 
+/*********************/
+/* Colors            */
+/*********************/
+
 @define-color bg @color0;
 @define-color text @color15;
 
-@define-color highlight @color2;
+@define-color highlight @bar1;
 @define-color inactive @color7;
-@define-color hover @color6;
+@define-color hover @color3;
+
+@define-color bar1 @color4;
+@define-color bar2 @color2;
+@define-color bar3 @color3;
+@define-color bar4 @color5;
+
+/*********************/
+/* Window settings   */
+/*********************/
 
 * {
   font-size: 18px;
-  font-family: "DejaVu Sans Mono", "Font Awesome 6 Pro", "DejaVuSansM Nerd Font";
+  font-family: "DejaVu Sans Mono", "Font Awesome 6", "DejaVuSansM Nerd Font";
+  border: none;
+  border-radius: 0;
 }
 
 window#waybar {
   color: @text;
-  background: none;
-  margin: 4px 0px 0px 0px;
+  background: alpha(@bg, 0.80);
+}
+
+.topbar {
+  border-bottom: 2px solid @text;
+}
+
+.botbar {
+  border-top: 2px solid @text;
 }
 
 .modules-left,
 .modules-right,
 .modules-center {
-  background-color: @bg;
-  border-radius: 16px;
-  border: 2px solid @color1;
-  padding: 0px 16px;
+  padding: 0px 24px;
 }
 
 .modules-left {
@@ -35,37 +54,62 @@ window#waybar {
   margin: 0px 12px 0px 0px;
 }
 
-#custom-sep {
-  color: @text;
-  margin: 6px 0px;
-}
-
-#custom-power {
-  color: @color10;
-  padding: 0px 6px 0px 0px;
-}
+/*********************/
+/* Audio modules     */
+/*********************/
 
 #wireplumber {
-  color: @color11;
+  color: @bar2;
 }
 
 #wireplumber.muted {
   padding: 0px 12px 0px 0px;
 }
 
-#mpd {
-  color: @color12;
+#mpd.control {
+  color: @bar3;
 }
 
-#workspaces button {
-  color: @gray;
-  background-image: none;
-  border: 0px;
+#mpd {
+  color: @bar4;
 }
+
+/*********************/
+/* Custom modules    */
+/*********************/
+
+#custom-power {
+  font-size: 24px;
+  color: @bar1;
+  padding: 0px 6px 0px 0px;
+}
+
+#custom-restart {
+  font-size: 24px;
+  color: @bar3;
+  padding: 0px 6px 0px 0px;
+}
+
+#custom-sep {
+  color: @text;
+  margin: 6px 0px;
+}
+
+#custom-suspend {
+  font-size: 24px;
+  color: @bar2;
+  padding: 0px 6px 0px 0px;
+}
+
+/*********************/
+/* Hyprland modules  */
+/*********************/
 
 #workspaces button {
   color: @inactive;
   background: none;
+  transition-property: color;
+  transition-duration: 0.4s;
 }
 
 #workspaces button:hover {
@@ -76,26 +120,67 @@ window#waybar {
   color: @highlight;
 }
 
-#tray {
-  color: @text;
+#window {
+  color: @bar2
 }
 
-#cpu {
-  color: @color14;
+/*********************/
+/* Info modules      */
+/*********************/
+
+#backlight {
+  color: @bar1;
 }
 
-#memory {
-  color: @color13;
+#backlight-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+#backlight-slider trough {
+  min-height: 10px;
+  min-width: 80px;
+  border-radius: 5px;
+  background-color: @bg;
 }
 
-#network {
-  color: @color12;
+#backlight-slider highlight {
+  min-height: 10px;
+  border-radius: 5px;
+  background-color: @bar1;
 }
 
 #battery {
-  color: @color11;
+  color: @bar2;
 }
 
 #clock {
-  color: @color10;
+  color: @bar1;
+}
+
+#cpu {
+  color: @bar1;
+}
+
+#disk {
+  color: @bar3;
+}
+
+#memory {
+  color: @bar2;
+}
+
+#network {
+  color: @bar4;
+}
+
+#temperature {
+  color: @bar1;
+}
+
+#tray {
+  color: @text;
 }
