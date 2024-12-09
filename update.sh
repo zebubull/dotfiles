@@ -11,9 +11,9 @@ if [[ -f "/etc/pkglist.txt" && -f "./pkglist.txt" ]]; then
         else
             echo "/etc/pkglist.txt is newer, updating ./pkglist.txt."
         fi
-        echo "Added packages:"
-        git -P diff --no-index -U0 -- pkglist.txt /etc/pkglist.txt | grep --color=always '^[+-][^+-]\S*' | grep -v -f pkgignore.txt
         cat /etc/pkglist.txt | grep --color=never -v -x -f pkgignore.txt > pkglist.txt
+        echo "Added packages:"
+        git diff pkglist.txt | grep -e "^[+-][a-zA-Z].*$"
         echo "Done."
     fi
 else

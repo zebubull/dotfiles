@@ -18,6 +18,8 @@ hyprland
 imagemagick
 jq
 kitty
+languagetool
+lazygit
 less
 lib32-gamemode
 lxqt-policykit
@@ -56,7 +58,7 @@ ttf-cousine-nerd
 ttf-dejavu-nerd
 ttf-font-awesome
 ufw
-waybar
+vscode-json-languageserver
 wget
 wireplumber
 wl-clipboard
