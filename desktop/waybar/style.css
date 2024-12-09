@@ -1,5 +1,9 @@
 @import url("colors.css");
 
+/*********************/
+/* Colors            */
+/*********************/
+
 @define-color bg @color0;
 @define-color text @color15;
 
@@ -12,6 +16,10 @@
 @define-color bar3 @color3;
 @define-color bar4 @color5;
 
+/*********************/
+/* Window settings   */
+/*********************/
+
 * {
   font-size: 18px;
   font-family: "DejaVu Sans Mono", "Font Awesome 6", "DejaVuSansM Nerd Font";
@@ -21,7 +29,7 @@
 
 window#waybar {
   color: @text;
-  background: alpha(@bg, 0.90);
+  background: alpha(@bg, 0.80);
 }
 
 .topbar {
@@ -46,35 +54,12 @@ window#waybar {
   margin: 0px 12px 0px 0px;
 }
 
-#custom-sep {
-  color: @text;
-  margin: 6px 0px;
-}
-
-#custom-power {
-  font-size: 24px;
-  color: @bar1;
-  padding: 0px 6px 0px 0px;
-}
-
-#custom-suspend {
-  font-size: 24px;
-  color: @bar2;
-  padding: 0px 6px 0px 0px;
-}
-
-#custom-restart {
-  font-size: 24px;
-  color: @bar3;
-  padding: 0px 6px 0px 0px;
-}
+/*********************/
+/* Audio modules     */
+/*********************/
 
 #wireplumber {
   color: @bar2;
-}
-
-#clock {
-  color: @bar1;
 }
 
 #wireplumber.muted {
@@ -88,6 +73,37 @@ window#waybar {
 #mpd {
   color: @bar4;
 }
+
+/*********************/
+/* Custom modules    */
+/*********************/
+
+#custom-power {
+  font-size: 24px;
+  color: @bar1;
+  padding: 0px 6px 0px 0px;
+}
+
+#custom-restart {
+  font-size: 24px;
+  color: @bar3;
+  padding: 0px 6px 0px 0px;
+}
+
+#custom-sep {
+  color: @text;
+  margin: 6px 0px;
+}
+
+#custom-suspend {
+  font-size: 24px;
+  color: @bar2;
+  padding: 0px 6px 0px 0px;
+}
+
+/*********************/
+/* Hyprland modules  */
+/*********************/
 
 #workspaces button {
   color: @inactive;
@@ -108,12 +124,16 @@ window#waybar {
   color: @bar2
 }
 
-#tray {
-  color: @text;
+/*********************/
+/* Info modules      */
+/*********************/
+
+#clock {
+  color: @bar1;
 }
 
-#network {
-  color: @bar4;
+#cpu {
+  color: @bar1;
 }
 
 #disk {
@@ -124,6 +144,15 @@ window#waybar {
   color: @bar2;
 }
 
-#cpu, #temperature {
+#network {
+  color: @bar4;
+}
+
+#temperature {
   color: @bar1;
 }
+
+#tray {
+  color: @text;
+}
+

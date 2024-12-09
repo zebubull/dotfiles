@@ -6,8 +6,6 @@
         "height": 36,
         "spacing": 12,
         "modules-left": [
-            // "custom/power",
-            // "custom/sep",
             "hyprland/workspaces",
             "custom/sep",
             "hyprland/window"
@@ -69,6 +67,9 @@
                 "on-click-middle": "shift_reset"
             }
         },
+        "custom/sep": {
+            "format": ""
+        },
         "hyprland/window": {
             "icon": false
         },
@@ -109,12 +110,6 @@
                 "empty": ""
             }
         },
-        "mpd#control": {
-            "format": "  {volume}% {elapsedTime:%M:%S}/{totalTime:%M:%S}",
-            "format-paused": " ",
-            "on-scroll-up": "mpc volume +1",
-            "on-scroll-down": "mpc volume -1"
-        },
         "mpd": {
             "format": "{stateIcon} {title}",
             "format-paused": "{stateIcon}",
@@ -125,8 +120,11 @@
                 "playing": ""
             }
         },
-        "custom/sep": {
-            "format": ""
+        "mpd#control": {
+            "format": "  {volume}% {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+            "format-paused": " ",
+            "on-scroll-up": "mpc volume +1",
+            "on-scroll-down": "mpc volume -1"
         },
         "tray": {
             "icon-size": 20,
@@ -172,6 +170,21 @@
             "format": " {usage}%",
             "max-length": 10
         },
+        "custom/power": {
+            "on-click": "systemctl poweroff",
+            "format": "󰐥"
+        },
+        "custom/restart": {
+            "on-click": "systemctl reboot",
+            "format": "󰜉"
+        },
+        "custom/sep": {
+            "format": ""
+        },
+        "custom/suspend": {
+            "on-click": "systemctl suspend",
+            "format": "󰤄"
+        },
         "disk#home": {
             "path": "/home",
             "format": "󰋜 {percentage_used}%"
@@ -179,12 +192,6 @@
         "disk#root": {
             "path": "/",
             "format": "󰋊 {percentage_used}%"
-        },
-        "temperature": {
-            "hwmon-path": [
-                "/sys/class/hwmon/hwmon3/temp3_input",
-                "/sys/class/hwmon/hwmon3/temp4_input"
-            ]
         },
         "memory": {
             "interval": 30,
@@ -196,20 +203,11 @@
             "format-disconnected": "󰖪 No Internet",
             "format": "{ipaddr}: {bandwidthUpBytes} 󰓢 {bandwidthDownBytes}"
         },
-        "custom/power": {
-            "on-click": "systemctl poweroff",
-            "format": "󰐥"
-        },
-        "custom/suspend": {
-            "on-click": "systemctl suspend",
-            "format": "󰤄"
-        },
-        "custom/restart": {
-            "on-click": "systemctl reboot",
-            "format": "󰜉"
-        },
-        "custom/sep": {
-            "format": ""
+        "temperature": {
+            "hwmon-path": [
+                "/sys/class/hwmon/hwmon3/temp3_input",
+                "/sys/class/hwmon/hwmon3/temp4_input"
+            ]
         },
         "wlr/taskbar": {
             "all-outputs": true,
