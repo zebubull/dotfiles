@@ -7,14 +7,15 @@
 @define-color bg @color0;
 @define-color text @color15;
 
-@define-color highlight @bar1;
-@define-color inactive @color7;
-@define-color hover @color3;
-
 @define-color bar1 @color4;
 @define-color bar2 @color2;
 @define-color bar3 @color3;
 @define-color bar4 @color5;
+@define-color bar5 @color6;
+
+@define-color highlight @bar1;
+@define-color inactive @color7;
+@define-color hover @color3;
 
 /*********************/
 /* Window settings   */
@@ -34,10 +35,6 @@ window#waybar {
 
 .topbar {
   border-bottom: 2px solid @text;
-}
-
-.botbar {
-  border-top: 2px solid @text;
 }
 
 .modules-left,
@@ -78,27 +75,9 @@ window#waybar {
 /* Custom modules    */
 /*********************/
 
-#custom-power {
-  font-size: 24px;
-  color: @bar1;
-  padding: 0px 6px 0px 0px;
-}
-
-#custom-restart {
-  font-size: 24px;
-  color: @bar3;
-  padding: 0px 6px 0px 0px;
-}
-
 #custom-sep {
   color: @text;
   margin: 6px 0px;
-}
-
-#custom-suspend {
-  font-size: 24px;
-  color: @bar2;
-  padding: 0px 6px 0px 0px;
 }
 
 /*********************/
@@ -120,10 +99,6 @@ window#waybar {
   color: @highlight;
 }
 
-#window {
-  color: @bar2
-}
-
 /*********************/
 /* Info modules      */
 /*********************/
@@ -133,23 +108,23 @@ window#waybar {
 }
 
 #cpu {
-  color: @bar1;
-}
-
-#disk {
-  color: @bar3;
-}
-
-#memory {
   color: @bar2;
 }
 
-#network {
+#disk {
   color: @bar4;
 }
 
+#memory {
+  color: @bar3;
+}
+
+#network {
+  color: @bar5;
+}
+
 #temperature {
-  color: @bar1;
+  color: @bar2;
 }
 
 #tray {

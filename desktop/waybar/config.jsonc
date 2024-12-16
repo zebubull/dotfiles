@@ -8,7 +8,9 @@
         "modules-left": [
             "hyprland/workspaces",
             "custom/sep",
-            "hyprland/window"
+            "tray",
+            "custom/sep",
+            "wireplumber"
         ],
         "modules-center": [
             "mpd#control",
@@ -18,9 +20,15 @@
             "mpd"
         ],
         "modules-right": [
-            "wireplumber",
+            "network",
             "custom/sep",
-            "tray",
+            "disk#home",
+            "disk#root",
+            "custom/sep",
+            "memory",
+            "custom/sep",
+            "temperature",
+            "cpu",
             "custom/sep",
             "clock"
         ],
@@ -70,8 +78,18 @@
         "custom/sep": {
             "format": ""
         },
-        "hyprland/window": {
-            "icon": false
+        "cpu": {
+            "interval": 10,
+            "format": " {usage}%",
+            "max-length": 10
+        },
+        "disk#home": {
+            "path": "/home",
+            "format": "󰋜 {percentage_used}%"
+        },
+        "disk#root": {
+            "path": "/",
+            "format": "󰋊 {percentage_used}%"
         },
         "hyprland/workspaces": {
             "all-outputs": false,
@@ -110,6 +128,11 @@
                 "empty": ""
             }
         },
+        "memory": {
+            "interval": 30,
+            "format": "󱘲 {}%",
+            "max-length": 10
+        },
         "mpd": {
             "format": "{stateIcon} {title}",
             "format-paused": "{stateIcon}",
@@ -126,6 +149,17 @@
             "on-scroll-up": "mpc volume +1",
             "on-scroll-down": "mpc volume -1"
         },
+        "network": {
+            "interface": "enp4s0",
+            "format-disconnected": "󰖪 No Internet",
+            "format": "{ipaddr}: {bandwidthUpBytes} 󰓢 {bandwidthDownBytes}"
+        },
+        "temperature": {
+            "hwmon-path": [
+                "/sys/class/hwmon/hwmon3/temp3_input",
+                "/sys/class/hwmon/hwmon3/temp4_input"
+            ]
+        },
         "tray": {
             "icon-size": 20,
             "spacing": 8
@@ -139,84 +173,6 @@
                 "",
                 ""
             ]
-        }
-    },
-    {
-        "name": "botbar",
-        "layer": "top",
-        "position": "bottom",
-        "height": 36,
-        "spacing": 12,
-        // "modules-left": [
-        //     "custom/power",
-        //     "custom/sep",
-        //     "custom/suspend",
-        //     "custom/sep",
-        //     "custom/restart"
-        // ],
-        "modules-right": [
-            "network",
-            "custom/sep",
-            "disk#home",
-            "disk#root",
-            "custom/sep",
-            "memory",
-            "custom/sep",
-            "temperature",
-            "cpu"
-        ],
-        "cpu": {
-            "interval": 10,
-            "format": " {usage}%",
-            "max-length": 10
-        },
-        "custom/power": {
-            "on-click": "systemctl poweroff",
-            "format": "󰐥"
-        },
-        "custom/restart": {
-            "on-click": "systemctl reboot",
-            "format": "󰜉"
-        },
-        "custom/sep": {
-            "format": ""
-        },
-        "custom/suspend": {
-            "on-click": "systemctl suspend",
-            "format": "󰤄"
-        },
-        "disk#home": {
-            "path": "/home",
-            "format": "󰋜 {percentage_used}%"
-        },
-        "disk#root": {
-            "path": "/",
-            "format": "󰋊 {percentage_used}%"
-        },
-        "memory": {
-            "interval": 30,
-            "format": "󱘲 {}%",
-            "max-length": 10
-        },
-        "network": {
-            "interface": "enp4s0",
-            "format-disconnected": "󰖪 No Internet",
-            "format": "{ipaddr}: {bandwidthUpBytes} 󰓢 {bandwidthDownBytes}"
-        },
-        "temperature": {
-            "hwmon-path": [
-                "/sys/class/hwmon/hwmon3/temp3_input",
-                "/sys/class/hwmon/hwmon3/temp4_input"
-            ]
-        },
-        "wlr/taskbar": {
-            "all-outputs": true,
-            "format": "{icon}",
-            "icon-size": 24,
-            "icon-theme": "Numix-Circle",
-            "tooltip-format": "{title}",
-            "on-click": "activate",
-            "on-click-middle": "close"
         }
     }
 ]
