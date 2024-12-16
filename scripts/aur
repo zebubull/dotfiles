@@ -34,10 +34,10 @@ def print_usage():
     print("")
     print("Subcommands:")
     print("\tcheck:           check for out-of-date packages from the AUR")
-    print("\tget:             install a package from the AUR")
+    print("\tget:             install a package from the AUR (DON'T USE)")
     print("\thelp:            print this message")
     print("\tsearch QUERY...: search for a package on the AUR")
-    print("\tupdate PACKAGE:  update an installed package from the AUR")
+    print("\tupdate PACKAGE:  update an installed package from the AUR (DON'T USE)")
     exit(1)
 
 class Package:
@@ -58,7 +58,7 @@ class RemotePackage(Package):
         return self.version != local.version
 
     def install(self):
-        """ install this package """
+        """ install this package. this function does a lot of really stupid things, please don't use it """
         # create (if it doesn't exist) the ~/.aur directory and go into it
         home = os.getenv("HOME")
         if not os.path.exists(f"{home}/.aur"):
@@ -187,7 +187,7 @@ def confirm_package_install(pkg: Package):
 def get_package(name: str):
     """ attempt to install the package from the AUR with `name `"""
     # aur_rpc_request will exit if the package doesn't exist
-    remote = aur_rpc_request(f"info?arg[]={name}")[0]
+    remote = aur_rpc_request(f"info?arg[]={name}")
 
     # print a warning if the package is already installed
     installed = get_installed_packages()
@@ -250,9 +250,15 @@ def main():
         ensure_arg(3)
         search_for_package(" ".join(sys.argv[2:]))
     elif subcommand == "get":
+        # this needs some work to be usable, error for now
+        print("ERROR: \"get\" is unstable and does some bad stuff. don't use this.")
+        exit(1)
         ensure_arg(3)
         get_package(sys.argv[2])
     elif subcommand == "update":
+        # this needs some work to be usable, error for now
+        print("ERROR: \"update\" is unstable and does some bad stuff. don't use this.")
+        exit(1)
         ensure_arg(3)
         update_package(sys.argv[2])
     else:
