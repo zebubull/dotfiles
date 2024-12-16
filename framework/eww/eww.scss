@@ -6,70 +6,11 @@ $text: $color15;
 
 $fg-1: $color13;
 
-$cpu: $color2;
-$mem: $color4;
-$batt: $color3;
-$vol: $color5;
-$bness: $color6;
-
 * {
   all: unset;
   font-family: Cousine Nerd Font;
   font-size: 24px;
   color: $text;
-}
-
-.window {
-}
-
-.left, .right {
-  background-color: $bg;
-  padding: 4px;
-  border-radius: 32px;
-}
-
-.right {
-  margin-right: 16px;
-}
-
-.arch-logo {
-  color: #1793D0;
-  font-weight: bold;
-  font-size: 28px;
-  margin: -2px 8px;
-}
-
-.ws-box {
-  margin-right: 8px;
-}
-
-.ws {
-  padding: 0px 10px;
-}
-
-.ws.current {
-  color: $fg-1;
-}
-
-.time {
-  margin: 0px 12px;
-}
-
-.hour, .sep, .min {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.hour {
-  color: $fg-1;
-}
-
-.sep {
-  color: $fg-1;
-}
-
-.min {
-  color: $fg-1;
 }
 
 .dash {
@@ -177,86 +118,4 @@ $bness: $color6;
 .on label {
     font-weight: bold;
     color: $fg-1;
-}
-
-.perf scale trough {
-  all: unset;
-  background-color: $bg-light;
-  border-radius: 15px;
-  min-height: 240px;
-  min-width: 30px;
-  margin: 1rem .5rem;
-}
-
-.perf scale trough highlight {
-  margin: .1rem .0rem;
-  border-radius: 15px;
-}
-
-.cpubar trough highlight {
-  background-color: $cpu;
-}
-
-.membar trough highlight {
-  background-color: $mem;
-}
-
-.sys_volbar trough highlight {
-  background-color: $vol;
-}
-
-.batbar trough highlight {
-  background-color: $batt;
-}
-
-.bbar trough highlight {
-  background-color: $bness;
-}
-
-tooltip {
-  background-color: $bg-light;
-  border-radius: 5px;
-  margin: 4px;
-}
-
-.perf-label, .pwrbtn label {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.cpu {
-  color: $cpu;
-}
-
-.bat {
-  color: $batt;
-}
-
-.vol {
-  color: $vol;
-}
-
-.bness {
-  color: $bness;
-}
-
-.mem {
-  color: $mem;
-}
-
-.pwrbtn label {
-  color: $fg-1;
-}
-
-.perf-label {
-  margin-top: 4px;
-  padding-right: 10px;
-}
-
-.mem {
-  padding-right: 13px;
-}
-
-.power {
-  margin-top: 48px;
 }
