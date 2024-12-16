@@ -9,6 +9,8 @@ end
 fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin
 set -x EDITOR helix
+set __fish_git_prompt_showupstream informative
+set __fish_git_prompt_showdirtystate 1
+set __fish_git_prompt_showcolorhints 1
+set __fish_git_prompt_color purple
 source ~/.config/fish/secrets.fish
-
-starship init fish | source
