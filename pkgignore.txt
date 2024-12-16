@@ -1,6 +1,8 @@
 amd-ucode
 base
 base-devel
+bluez
+bluez-utils
 chromium
 discord
 intel-ucode
@@ -46,6 +48,7 @@ fcitx5-mozc
 hunspell
 hunspell-en_us
 hypen-en
+languagetool
 
 samba
 
@@ -55,4 +58,5 @@ flatpak
 
 nethack
 arduino-ide
-krita
+gamemode
+lib32-gamemode
