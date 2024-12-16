@@ -1,23 +1,17 @@
-# The official zebubull dotfiles
-This repository contains my very official and very important dotfiles for my arch linux machines.
-Everything is structured around the wonderful `sync.sh` script that installs all dotfiles by making
-a bunch of symlinks to everything as need be. It also manages a list of installed packages that are
-automatically synced with a pacman hook every time something is changed. Basically a scuffed version
-of NixOS with a very weird and cursed shell script that does everything. 
+# Dotfiles
+This repository mainly exists as a way for me to sync my dotfiles between my desktop and laptop. The `sync.sh` script does most of the work: it symlinks the relevant configs on each machine and installs some common packages. This is way too complex and sucks to use, but I haven't found anything that sucks less.
 
-## Normal Config
-All normal config is placed in folders which are symlinked to their corresponding folder in $HOME/.config.
-Some miscellaneous files that don't follow that pattern are linked to a specified target location.
+## sync.sh
+Inside `synch.sh` are lists of directories and files to sync.
+- For each directory, `sync.sh` will try to symlink the directory inside the folder matching the computer's hostname. If that directory does not exist, it will symlink the directory located in `common`.
+- For each file, `sync.sh` is given a target and a destitination to sync. Individual files do not have system-dependent config, and will always be common to all systems. Files that need root permission to copy (i.e. those that go to `/etc`) have their own list as to not constantly prompt for root access.
+`sync.sh` also uses the contents of `pkglist.txt` to sync packages between systems. Packages listed in `pkgignore.txt` will be ignored.
 
-## System-dependent Config
-I have both a laptop and a desktop so being able to config certain things for multiple systems is necessary.
-When linking a directory, `sync.sh` will check to see if a folder with the name of the current system (by default the hostname)
-has a matching directory and link it. It will fall back to the common directory if it is not found. Individual file
-linking does not support system-dependent config yet and those files live in the base directory, not common.
+### Custom name
+A custom name can be provided, i.e. `sync.sh foo` will search for directories inside `foo` instead of the computer's hostname. Fallbacks to `common` remain unchanged.
 
-## Todo
-- [x] Basic config
-- [x] Sync packages
-- [ ] Sync AUR packages
-- [x] System-dependent config
-- [x] Maybe overhaul system-dependent config
+## update.sh
+`update.sh` is a simple script that updates `pkglist.txt` with all installed packages (not including those in `pkgignore.txt`) and prints the diff from the latest commit.
+
+## Disclaimer
+These scripts have not been tested on anything but my personal machines. They are much more complicated than they need to be, and they are difficult to configure. I have tried to put failsafes in place but still be careful if you decide to borrow these (for some reason).
