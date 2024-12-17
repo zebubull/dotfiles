@@ -32,6 +32,8 @@ pipewire
 pipewire-pulse
 playerctl
 pulsemixer
+pyalpm
+python-lsp-server
 qpwgraph
 qt5-wayland
 rofi-wayland

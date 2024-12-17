@@ -1,0 +1,175 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+import os
+import socket
+import sys
+from pathlib import Path
+from typing import List, Tuple
+import pyalpm
+from pyalpm import Handle, Package
+
+def load_config():
+    home = os.getenv("HOME")
+    dotsync_path = ''
+    config_path = f'{home}/.config/dotsync/config'
+    if not os.path.exists(config_path):
+        return
+
+    with open(config_path, 'r') as f:
+        data = f.readlines()
+        for line in data:
+            match line.split('='):
+                case ["root", path]:
+                    dotsync_path = path.replace('~', home).strip()
+                case _:
+                    print("invalid dotsync config file")
+                    exit(1)
+
+    if dotsync_path != '' and os.getcwd() != dotsync_path:
+        print(f'running dotsync in directory {dotsync_path}')
+        os.chdir(dotsync_path)
+
+ALPM_REASON_EXPLICIT = 0
+ALPM_REASON_DEPEDENCY = 1
+
+class Alpm:
+    def __init__(self):
+        """ open a connection to libalpm and load all syncdbs. """
+        self.handle = Handle(".", "/var/lib/pacman")
+        self.db = self.handle.get_localdb()
+        self.syncpkgs = set()
+        for name in ['core', 'extra', 'multilib']:
+            db = self.handle.register_syncdb(name, 0)
+            self.syncpkgs |= set(p.name for p in db.pkgcache)
+
+    def get_explicit_packages(self) -> List[Package]:
+        """ get a list of explicitly installed, non AUR packages from libalpm. """
+        packages = self.db.pkgcache
+        return [pkg for pkg in packages if pkg.reason == ALPM_REASON_EXPLICIT and pkg.name in self.syncpkgs]
+
+class PackageList:
+    def __init__(self, packages: List[str]):
+        self.packages = set(packages)
+
+    def load_from_file(path: str):
+        """ load a package list from a file """
+        file = Path(path)
+        if not file.exists():
+            file.touch()
+            return PackageList([])
+
+        lines = file.read_text().splitlines()
+        return PackageList([line for line in lines if len(line) > 0 and line[0] != '#'])
+
+    def __iter__(self):
+        return self.packages.__iter__()
+
+    def contains(self, pkg: str):
+        """ check if this package list contains a package. """
+        return pkg in self.packages
+
+    def get_package_diff(self, original: PackageList) -> Tuple[PackageList, PackageList]:
+        """ get the packages added and removed from `self` to `original` respectively. """
+        added = self.packages.symmetric_difference(original.packages)
+        removed = set()
+        for package in added:
+            if original.contains(package):
+                removed.add(package)
+
+        added.difference_update(removed)
+        return (added, removed)
+
+    def difference_update(self, other: PackageList):
+        """ remove all packages in `other` from `self`. """
+        self.packages.difference_update(other.packages)
+
+def dotsync_info():
+    """ print basic program info. """
+    print("dotsync.py version 0.1.0")
+
+def dotsync_sync(args: List[str]):
+    """ use the user provided install function in `dotconf.py` to install
+        config files. """
+    # import dotconf after loading config because we may need to
+    # cd into the config folder to find dotconf.py
+    from dotconf import DotConf
+    import dotconf
+
+    name = socket.gethostname()
+    dry_run = False
+    force = False
+    for arg in args:
+        match arg:
+            case "--dry":
+                dry_run = True
+            case "--force":
+                force = True
+            case _:
+                name = arg
+
+    if not os.path.exists(name):
+        print(f"ERROR: could not find config dir for host '{name}'")
+        exit(1)
+
+    alpm = Alpm()
+    installed = alpm.get_explicit_packages()
+    del alpm # manually delete so that this doesn't mess up pacman used in dotconf.install
+    targets = PackageList.load_from_file(".pkglist")
+    conf = DotConf(name, set(p.name for p in installed), targets.packages, dry_run, force)
+    dotconf.install(conf)
+
+def dotsync_update():
+    """ update .pkglist with all current installed packages, respecting
+        .pkgignore and printing the diff. """
+    alpm = Alpm()
+    explicit = alpm.get_explicit_packages()
+    current = PackageList.load_from_file(".pkglist")
+    ignored = PackageList.load_from_file(".pkgignore")
+    installed = PackageList([pkg.name for pkg in explicit])
+
+    new = installed.difference_update(ignored)
+    (added, removed) = installed.get_package_diff(current)
+
+    print(f'Since last update: {len(added)} packages added, {len(removed)} packages removed')
+
+    if len(added) == 0 and len(removed) == 0:
+        return
+
+    for a in sorted(list(added)):
+        print(f'\t+{a}')
+    for r in sorted(list(removed)):
+        print(f'\t-{r}')
+
+    with open('.pkglist', 'w') as f:
+        f.writelines([line + '\n' for line in sorted(list(installed))])
+
+def print_usage():
+    """ print the usage of the program and exit. """
+    print(f"Usage: {sys.argv[0]} SUBCOMMAND")
+    print("\thelp:                              show this menu")
+    print("\tinfo:                              show info about the program")
+    print("\tsync [hostname] [--dry] [--force]: synchronize config files")
+    print("\t  hostname:                        specify a custom hostname. by default,")
+    print("\t                                   this is the system hostname")
+    print("\t  --dry:                           do a dry run")
+    print("\t  --force:                         ignore existing files and packages")
+    print("\tupdate:                            update package list")
+    exit(1)
+
+def main():
+    match sys.argv:
+        case [_, "help"]:
+            print_usage()
+        case [_, "info"]:
+            dotsync_info()
+        case [_, "sync", *args]:
+            dotsync_sync(args)
+        case [_, "update"]:
+            dotsync_update()
+        case _:
+            print_usage()
+
+if __name__=='__main__':
+    load_config()
+    main()
