@@ -7,6 +7,8 @@ firefox
 fish
 gdb
 git
+greetd
+greetd-tuigreet
 grim
 helix
 hyprland
@@ -46,6 +48,7 @@ ttf-cousine-nerd
 ttf-dejavu-nerd
 ttf-font-awesome
 ufw
+unzip
 wget
 wireplumber
 wl-clipboard
