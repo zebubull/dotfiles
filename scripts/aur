@@ -233,7 +233,7 @@ def update_package(name: str):
 
 def ensure_arg(count: int):
     """ make sure that at least `count` arguments have been provided """
-    if len(sys.argv) < 2:
+    if len(sys.argv) < count:
         print_usage()
 
 def main():
