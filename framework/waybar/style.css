@@ -129,7 +129,7 @@ window#waybar {
 /*********************/
 
 #backlight {
-  color: @bar1;
+  color: @bar3;
 }
 
 #backlight-slider slider {
@@ -162,23 +162,23 @@ window#waybar {
 }
 
 #cpu {
-  color: @bar1;
-}
-
-#disk {
-  color: @bar3;
-}
-
-#memory {
   color: @bar2;
 }
 
-#network {
+#disk {
   color: @bar4;
 }
 
+#memory {
+  color: @bar3;
+}
+
+#network {
+  color: @color6;
+}
+
 #temperature {
-  color: @bar1;
+  color: @bar2;
 }
 
 #tray {

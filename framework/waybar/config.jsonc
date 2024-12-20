@@ -8,7 +8,13 @@
         "modules-left": [
             "hyprland/workspaces",
             "custom/sep",
-            "hyprland/window"
+            "wireplumber",
+            "custom/sep",
+            "backlight",
+            "custom/sep",
+            "battery",
+            "custom/sep",
+            "tray",
         ],
         "modules-center": [
             "mpd#control",
@@ -18,12 +24,36 @@
             "mpd"
         ],
         "modules-right": [
-            "wireplumber",
+            "network",
             "custom/sep",
-            "tray",
+            "disk#home",
+            "disk#root",
+            "custom/sep",
+            "memory",
+            "custom/sep",
+            "temperature",
+            "cpu",
             "custom/sep",
             "clock"
         ],
+        "battery": {
+            "interval": 30,
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon}  {capacity}%",
+            "format-icons": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        "backlight": {
+            "format": " {percent}%"
+        },
         "cava": {
             "framerate": 30,
             "autosens": 1,
@@ -70,6 +100,14 @@
         "custom/sep": {
             "format": ""
         },
+        "disk#home": {
+            "path": "/home",
+            "format": "󰋜 {percentage_used}%"
+        },
+        "disk#root": {
+            "path": "/",
+            "format": "󰋊 {percentage_used}%"
+        },
         "hyprland/window": {
             "icon": false
         },
@@ -98,6 +136,11 @@
                 "empty": ""
             }
         },
+        "memory": {
+            "interval": 30,
+            "format": "󱘲 {}%",
+            "max-length": 10
+        },
         "mpd": {
             "format": "{stateIcon} {title}",
             "format-paused": "{stateIcon}",
@@ -114,6 +157,11 @@
             "on-scroll-up": "mpc volume +1",
             "on-scroll-down": "mpc volume -1"
         },
+        "network": {
+            "interface": "wlp1s0",
+            "format-disconnected": "󰖪 No Internet",
+            "format": "{essid}: {bandwidthUpBytes} 󰓢 {bandwidthDownBytes}"
+        },
         "tray": {
             "icon-size": 20,
             "spacing": 8
@@ -127,106 +175,6 @@
                 "",
                 ""
             ]
-        }
-    },
-    {
-        "name": "botbar",
-        "layer": "top",
-        "position": "bottom",
-        "height": 36,
-        "spacing": 12,
-        "modules-left": [
-            "backlight",
-            // "backlight/slider", throws a bunch of dbus errors, look at this later
-            "custom/sep",
-            "battery"
-        ],
-        "modules-right": [
-            "network",
-            "custom/sep",
-            "disk#home",
-            "disk#root",
-            "custom/sep",
-            "memory",
-            "custom/sep",
-            "temperature",
-            "cpu"
-        ],
-        "battery": {
-            "interval": 30,
-            "states": {
-                "warning": 30,
-                "critical": 15
-            },
-            "format": "{icon}  {capacity}%",
-            "format-icons": [
-                "",
-                "",
-                "",
-                "",
-                ""
-            ]
-        },
-        "backlight": {
-            "format": " {percent}%"
-        },
-        "backlight/slider": {
-            "min": 0,
-            "max": 255,
-            "orientation": "horizontal",
-            "device": "amdgpu_bl1"
-        },
-        "cpu": {
-            "interval": 10,
-            "format": " {usage}%",
-            "max-length": 10
-        },
-        "custom/power": {
-            "on-click": "systemctl poweroff",
-            "format": "󰐥"
-        },
-        "custom/restart": {
-            "on-click": "systemctl reboot",
-            "format": "󰜉"
-        },
-        "custom/sep": {
-            "format": ""
-        },
-        "custom/suspend": {
-            "on-click": "systemctl suspend",
-            "format": "󰤄"
-        },
-        "disk#home": {
-            "path": "/home",
-            "format": "󰋜 {percentage_used}%"
-        },
-        "disk#root": {
-            "path": "/",
-            "format": "󰋊 {percentage_used}%"
-        },
-        "memory": {
-            "interval": 30,
-            "format": "󱘲 {}%",
-            "max-length": 10
-        },
-        "network": {
-            "interface": "wlp1s0",
-            "format-disconnected": "󰖪 No Internet",
-            "format": "{essid}: {bandwidthUpBytes} 󰓢 {bandwidthDownBytes}"
-        },
-        "temperature": {
-            "hwmon-path": [
-                "/sys/class/hwmon/hwmon8/temp4_input"
-            ]
-        },
-        "wlr/taskbar": {
-            "all-outputs": true,
-            "format": "{icon}",
-            "icon-size": 24,
-            "icon-theme": "Numix-Circle",
-            "tooltip-format": "{title}",
-            "on-click": "activate",
-            "on-click-middle": "close"
         }
     }
 ]
