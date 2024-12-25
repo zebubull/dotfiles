@@ -17,7 +17,7 @@ static const char *cursor_theme            = "Vimix-cursors";
 static const char cursor_size[]            = "24"; /* Make sure it's a valid integer, otherwise things will break */
 
 static const float movetime = 0.25;
-static double (*const movefn)(double) = movecubic;
+static double (*const movefn)(double) = moveinstant;
 
 /* tagging - TAGCOUNT must be no greater than 31 */
 #define TAGCOUNT (9)
@@ -27,13 +27,16 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "swww-daemon", NULL,
-        "mako", NULL,
-        "clipse", "--listen", NULL,
-        "eww", "daemon", NULL,
-        "waybar", NULL,
-        "corectrl", "--minimize-systray", NULL,
-        NULL /* terminate */
+    "systemctl", "--user", "import-environment", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP", NULL,
+    "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP=wlroots", NULL,
+    "swww-daemon", NULL,
+    "mako", NULL,
+    "clipse", "--listen", NULL,
+    "eww", "daemon", NULL,
+    "waybar", NULL,
+    "corectrl", "--minimize-systray", NULL,
+    "/usr/lib/xfce-polkit/xfce-polkit", NULL,
+    NULL /* terminate */
 };
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
@@ -41,6 +44,7 @@ static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   monitor */
 	/* examples: */
 	{ "firefox",          NULL,       1 << 1,       0,           -1 },
+	{ "xfce-polkit",      NULL,       0,            1,           -1 },
 	{ "discord",          NULL,       1 << 2,       0,           -1 },
 	{ "steam",            NULL,       1 << 3,       0,           -1 },
 };
@@ -138,7 +142,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] = { "kitty", NULL };
+static const char *termcmd[] = { "wezterm", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL};
 
 #define ADDPASSRULE(S, M, K) {.appid = S, .len = LENGTH(S), .key = K}
@@ -156,16 +160,16 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_s,          spawn,          SHCMD("/home/zebu/.local/bin/mixer") },
 	{ MODKEY,                    XKB_KEY_f,          spawn,          SHCMD("/home/zebu/.config/eww/launch_dash.sh") },
 
-	{ MODKEY,                    XKB_KEY_XF86AudioRaiseVolume,spawn,SHCMD("wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%+") },
-	{ MODKEY,                    XKB_KEY_XF86AudioLowerVolume,spawn,SHCMD("wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-") },
-	{ MODKEY,                    XKB_KEY_XF86AudioPlay,spawn,SHCMD("playerctl play-pause") },
-	{ MODKEY,                    XKB_KEY_XF86AudioMute,spawn,SHCMD("wpctl set-mute @DEFAULT_SINK@ toggle") },
+	{ 0,                         XKB_KEY_XF86AudioRaiseVolume,spawn,SHCMD("wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%+") },
+	{ 0,                         XKB_KEY_XF86AudioLowerVolume,spawn,SHCMD("wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-") },
+	{ 0,                         XKB_KEY_XF86AudioPlay,spawn,SHCMD("playerctl play-pause") },
+	{ 0,                         XKB_KEY_XF86AudioMute,spawn,SHCMD("wpctl set-mute @DEFAULT_SINK@ toggle") },
 
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_XF86AudioRaiseVolume,spawn,SHCMD("mpc volume +4") },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_XF86AudioLowerVolume,spawn,SHCMD("mpc volume -4") },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_XF86AudioPlay,spawn,SHCMD("mpc toggle") },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_XF86AudioNext,spawn,SHCMD("mpc next") },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_XF86AudioPrev,spawn,SHCMD("mpc prev") },
+	{ WLR_MODIFIER_SHIFT,        XKB_KEY_XF86AudioRaiseVolume,spawn,SHCMD("mpc volume +4") },
+	{ WLR_MODIFIER_SHIFT,        XKB_KEY_XF86AudioLowerVolume,spawn,SHCMD("mpc volume -4") },
+	{ WLR_MODIFIER_SHIFT,        XKB_KEY_XF86AudioPlay,spawn,SHCMD("mpc toggle") },
+	{ WLR_MODIFIER_SHIFT,        XKB_KEY_XF86AudioNext,spawn,SHCMD("mpc next") },
+	{ WLR_MODIFIER_SHIFT,        XKB_KEY_XF86AudioPrev,spawn,SHCMD("mpc prev") },
 
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
