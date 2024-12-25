@@ -138,9 +138,9 @@ def install(ctx: DotConf):
         DotConf.install_directory and DotConf.install_file. """
 
     # list of all directories to install
-    dirs = ["hypr", "mako", "eww", "gtk-3.0",
+    dirs = ["mako", "eww", "gtk-3.0",
             "wal", "rofi", "waybar", "helix",
-            "kitty", "fish", "fastfetch", "mpd",
+            "wezterm", "fish", "fastfetch", "mpd",
             "dotsync"]
     # install each directory
     for dir in dirs:
@@ -151,8 +151,6 @@ def install(ctx: DotConf):
     files = [
         ("~/.config/mpd-notification.conf", "~/.config/dotfiles/mpd-notification/mpd-notification.conf"),
         ("~/.config/eww/colors.scss","~/.cache/wal/colors.scss"),
-        ("~/.config/kitty/current-theme.conf","~/.cache/wal/colors-kitty.conf"),
-        ("~/.config/hypr/colors-hyprland.conf","~/.cache/wal/colors-hyprland.conf"),
         ("~/.config/mako/config","~/.cache/wal/colors-mako"),
         ("~/.config/rofi/theme.rasi","~/.cache/wal/colors-rofi.rasi"),
         ("~/.local/bin/wallpaper","~/.config/dotfiles/scripts/wallpaper"),
