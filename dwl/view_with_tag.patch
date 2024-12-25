@@ -1,0 +1,26 @@
+From 70ae429ffe78f238264a821b7abdf2866382e907 Mon Sep 17 00:00:00 2001
+From: zebubull <ldkourtev@gmail.com>
+Date: Tue, 24 Dec 2024 18:25:17 -0500
+Subject: [PATCH] move view with tag
+
+---
+ dwl.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/dwl.c b/dwl.c
+index def2562..07796c4 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -2677,8 +2677,7 @@ tag(const Arg *arg)
+ 		return;
+ 
+ 	sel->tags = arg->ui & TAGMASK;
+-	focusclient(focustop(selmon), 1);
+-	arrange(selmon);
++	view(arg);
+ 	printstatus();
+ }
+ 
+-- 
+2.47.1
+

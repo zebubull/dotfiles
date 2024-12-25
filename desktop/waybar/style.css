@@ -14,7 +14,8 @@
 @define-color bar5 @color6;
 
 @define-color highlight @bar1;
-@define-color inactive @color7;
+@define-color inactive @color15;
+@define-color empty @color7;
 @define-color hover @color3;
 
 /*********************/
@@ -81,21 +82,27 @@ window#waybar {
 }
 
 /*********************/
-/* Hyprland modules  */
+/* dwl modules       */
 /*********************/
 
-#workspaces button {
-  color: @inactive;
+#tags button {
+  color: @empty;
   background: none;
   transition-property: color;
   transition-duration: 0.4s;
+  margin-left: -8px;
+  margin-right: -8px;
 }
 
-#workspaces button:hover {
+#tags button.occupied {
+  color: @inactive;
+}
+
+#tags button:hover {
   color: @hover;
 }
 
-#workspaces button.active {
+#tags button.focused {
   color: @highlight;
 }
 

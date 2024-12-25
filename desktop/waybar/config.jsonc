@@ -6,7 +6,7 @@
         "height": 36,
         "spacing": 12,
         "modules-left": [
-            "hyprland/workspaces",
+            "dwl/tags",
             "custom/sep",
             "tray",
             "custom/sep",

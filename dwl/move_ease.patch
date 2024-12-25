@@ -1,0 +1,138 @@
+From b28717c20d862a18abf639a7dbe58a0a0d2be75b Mon Sep 17 00:00:00 2001
+From: zebubull <ldkourtev@gmail.com>
+Date: Tue, 24 Dec 2024 21:58:49 -0500
+Subject: [PATCH] add easinig to movement
+
+---
+ config.def.h |  3 +++
+ dwl.c        | 48 ++++++++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 49 insertions(+), 2 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 22d2171..a81517a 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -14,6 +14,9 @@ static const float urgentcolor[]           = COLOR(0xff0000ff);
+ /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
+ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
+ 
++static const float movetime = 0.25;
++static double (*const movefn)(double) = movecubic;
++
+ /* tagging - TAGCOUNT must be no greater than 31 */
+ #define TAGCOUNT (9)
+ 
+diff --git a/dwl.c b/dwl.c
+index def2562..700f1ef 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -141,6 +141,10 @@ typedef struct {
+ 	uint32_t tags;
+ 	int isfloating, isurgent, isfullscreen;
+ 	uint32_t resize; /* configure serial of a pending resize */
++	struct wlr_box move_start;
++	struct wlr_box move_end;
++	struct timespec move_time;
++	int moving;
+ } Client;
+ 
+ typedef struct {
+@@ -307,6 +311,7 @@ static void motionabsolute(struct wl_listener *listener, void *data);
+ static void motionnotify(uint32_t time, struct wlr_input_device *device, double sx,
+ 		double sy, double sx_unaccel, double sy_unaccel);
+ static void motionrelative(struct wl_listener *listener, void *data);
++static double movecubic(double t);
+ static void moveresize(const Arg *arg);
+ static void outputmgrapply(struct wl_listener *listener, void *data);
+ static void outputmgrapplyortest(struct wlr_output_configuration_v1 *config, int test);
+@@ -322,6 +327,7 @@ static void requeststartdrag(struct wl_listener *listener, void *data);
+ static void requestmonstate(struct wl_listener *listener, void *data);
+ static void resize(Client *c, struct wlr_box geo, int interact);
+ static void run(char *startup_cmd);
++static void scheduleresize(Client *c, struct wlr_box geo, int interact);
+ static void setcursor(struct wl_listener *listener, void *data);
+ static void setcursorshape(struct wl_listener *listener, void *data);
+ static void setfloating(Client *c, int floating);
+@@ -1901,6 +1907,12 @@ motionrelative(struct wl_listener *listener, void *data)
+ 			event->unaccel_dx, event->unaccel_dy);
+ }
+ 
++double
++movecubic(double t)
++{
++	return 1 - pow(1 - t, 3);
++}
++
+ void
+ moveresize(const Arg *arg)
+ {
+@@ -2108,6 +2120,7 @@ rendermon(struct wl_listener *listener, void *data)
+ 	struct wlr_output_state pending = {0};
+ 	struct wlr_gamma_control_v1 *gamma_control;
+ 	struct timespec now;
++	double progress;
+ 
+ 	/* Render if no XDG clients have an outstanding resize and are visible on
+ 	 * this monitor. */
+@@ -2148,6 +2161,23 @@ skip:
+ 	clock_gettime(CLOCK_MONOTONIC, &now);
+ 	wlr_scene_output_send_frame_done(m->scene_output, &now);
+ 	wlr_output_state_finish(&pending);
++
++	wl_list_for_each(c, &clients, link) {
++		if (!c->moving)
++			continue;
++		progress = (double)(now.tv_sec - c->move_time.tv_sec) +
++		           (double)(now.tv_nsec - c->move_time.tv_nsec) / 1000000000.0;
++		if (progress > movetime) {
++			c->moving = 0;
++			resize(c, c->move_end, 0);
++		} else {
++			double t = movefn(progress / movetime);
++			struct wlr_box geo = c->move_end;
++			geo.x = (int)((1 - t) * c->move_start.x + t * c ->move_end.x);
++			geo.y = (int)((1 - t) * c->move_start.y + t * c ->move_end.y);
++			resize(c, geo, 0);
++		}
++	}
+ }
+ 
+ void
+@@ -2271,6 +2301,20 @@ run(char *startup_cmd)
+ 	wl_display_run(dpy);
+ }
+ 
++void
++scheduleresize(Client *c, struct wlr_box geo, int interact)
++{
++	struct wlr_box setsize = geo;
++	setsize.x = c->geom.x;
++	setsize.y = c->geom.y;
++	resize(c, setsize, interact);
++
++	c->move_start = setsize;
++	c->move_end = geo;
++	clock_gettime(CLOCK_MONOTONIC, &c->move_time);
++	c->moving = 1;
++}
++
+ void
+ setcursor(struct wl_listener *listener, void *data)
+ {
+@@ -2712,11 +2756,11 @@ tile(Monitor *m)
+ 		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
+ 			continue;
+ 		if (i < m->nmaster) {
+-			resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + my, .width = mw,
++			scheduleresize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + my, .width = mw,
+ 				.height = (m->w.height - my) / (MIN(n, m->nmaster) - i)}, 0);
+ 			my += c->geom.height;
+ 		} else {
+-			resize(c, (struct wlr_box){.x = m->w.x + mw, .y = m->w.y + ty,
++			scheduleresize(c, (struct wlr_box){.x = m->w.x + mw, .y = m->w.y + ty,
+ 				.width = m->w.width - mw, .height = (m->w.height - ty) / (n - i)}, 0);
+ 			ty += c->geom.height;
+ 		}
+-- 
+2.47.1
+
