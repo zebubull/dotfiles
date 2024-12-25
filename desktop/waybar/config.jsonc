@@ -3,7 +3,7 @@
         "name": "topbar",
         "layer": "top",
         "position": "top",
-        "height": 36,
+        "height": 34,
         "spacing": 12,
         "modules-left": [
             "dwl/tags",

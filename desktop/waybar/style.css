@@ -34,10 +34,6 @@ window#waybar {
   background: alpha(@bg, 0.80);
 }
 
-.topbar {
-  border-bottom: 2px solid @text;
-}
-
 .modules-left,
 .modules-right,
 .modules-center {
