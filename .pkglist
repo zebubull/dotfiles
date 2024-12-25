@@ -11,7 +11,6 @@ greetd
 greetd-tuigreet
 grim
 helix
-hyprland
 imagemagick
 kitty
 lazygit
@@ -35,7 +34,6 @@ pipewire-pulse
 playerctl
 pulsemixer
 pyalpm
-python-lsp-server
 qpwgraph
 qt5-wayland
 rofi-wayland
@@ -49,10 +47,13 @@ ttf-dejavu-nerd
 ttf-font-awesome
 ufw
 unzip
+wayland-protocols
 wget
 wireplumber
 wl-clipboard
+wlroots
 xdg-desktop-portal
 xdg-desktop-portal-gtk
-xdg-desktop-portal-hyprland
+xdg-desktop-portal-wlr
 xdg-user-dirs
+xorg-xwayland
