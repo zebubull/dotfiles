@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 checkupdates
 if [[ $? == 0 ]]; then
