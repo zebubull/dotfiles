@@ -4,6 +4,7 @@ if status is-interactive
     alias neofetch="fastfetch"
     alias l="ll"
     alias mount="mount -o uid=zebu,gid=users"
+    alias lg="lazygit"
 end
 
 fish_add_path ~/.local/bin
