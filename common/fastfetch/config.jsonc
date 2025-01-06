@@ -65,6 +65,7 @@
         },
         {
             "type": "terminal",
+            "format": "{5} on {6}",
             "key": " ├  ",
             "keyColor": "32",
         },

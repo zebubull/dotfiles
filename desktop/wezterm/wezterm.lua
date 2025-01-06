@@ -60,12 +60,17 @@ if color_file == nil then print("failed to locate wal colors") else set_colors(c
 config.font = wezterm.font 'DejaVuSansM Nerd Font Mono'
 config.font_size = 20.0
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.92
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 
 config.disable_default_key_bindings = true
+config.default_cursor_style = 'SteadyBlock'
+
+config.animation_fps = 1
+config.cursor_blink_ease_in = 'Constant'
+config.cursor_blink_ease_out = 'Constant'
 
 config.keys = {
   { key = 'C', mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard'},
@@ -87,5 +92,7 @@ config.keys = {
   { key = 'LeftArrow', mods = 'CTRL', action = act.AdjustPaneSize {'Left', 1}},
   { key = 'RightArrow', mods = 'CTRL', action = act.AdjustPaneSize {'Right', 1}},
 }
+
+-- config.enable_wayland = false
 
 return config
