@@ -138,7 +138,7 @@ def install(ctx: DotConf):
         DotConf.install_directory and DotConf.install_file. """
 
     # list of all directories to install
-    dirs = ["mako", "eww", "gtk-3.0",
+    dirs = ["hypr", "mako", "eww", "gtk-3.0",
             "wal", "rofi", "waybar", "helix",
             "wezterm", "fish", "fastfetch", "mpd",
             "dotsync"]

@@ -15,8 +15,8 @@
         "modules-center": [
             "mpd#control",
             "custom/sep",
-            "cava",
-            "custom/sep",
+            // "cava", cava module is brokey :(
+            // "custom/sep",
             "mpd"
         ],
         "modules-right": [
