@@ -78,27 +78,27 @@ window#waybar {
 }
 
 /*********************/
-/* dwl modules       */
+/* hypr modules      */
 /*********************/
 
-#tags button {
-  color: @empty;
+#workspaces button {
+  color: @inactive;
   background: none;
   transition-property: color;
   transition-duration: 0.4s;
-  margin-left: -8px;
-  margin-right: -8px;
+  margin-left: -2px;
+  margin-right: -2px;
 }
 
-#tags button.occupied {
-  color: @inactive;
+#workspaces button.empty {
+  color: @empty;
 }
 
-#tags button:hover {
+#workspaces button:hover {
   color: @hover;
 }
 
-#tags button.focused {
+#workspaces button.active {
   color: @highlight;
 }
 
