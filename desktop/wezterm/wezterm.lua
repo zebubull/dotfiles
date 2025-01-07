@@ -91,8 +91,7 @@ config.keys = {
   { key = 'DownArrow', mods = 'CTRL', action = act.AdjustPaneSize {'Down', 1}},
   { key = 'LeftArrow', mods = 'CTRL', action = act.AdjustPaneSize {'Left', 1}},
   { key = 'RightArrow', mods = 'CTRL', action = act.AdjustPaneSize {'Right', 1}},
+  { key = 'r', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration},
 }
-
--- config.enable_wayland = false
 
 return config
