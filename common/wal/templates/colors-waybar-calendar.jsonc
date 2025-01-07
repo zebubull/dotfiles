@@ -1,0 +1,17 @@
+{{
+    "clock": {{
+        "tooltip-format": "<tt><span>{{calendar}}</span></tt>",
+        "calendar": {{
+            "mode"          : "month",
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {{
+                "months":     "<span color='{color10}'><b>{{}}</b></span>",
+                "days":       "<span color='{foreground}'><b>{{}}</b></span>",
+                "weeks":      "<span color='{color10}'><b>W{{}}</b></span>",
+                "weekdays":   "<span color='{color9}'><b>{{}}</b></span>",
+                "today":      "<span color='{color9}'><b>{{}}</b></span>"
+            }}
+        }}
+    }}
+}}

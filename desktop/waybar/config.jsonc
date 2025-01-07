@@ -1,179 +1,73 @@
-[
-    {
-        "name": "topbar",
-        "layer": "top",
-        "position": "top",
-        "height": 34,
-        "spacing": 12,
-        "modules-left": [
-            // "dwl/tags",
-            "hyprland/workspaces",
-            "custom/sep",
-            "tray",
-            "custom/sep",
-            "wireplumber"
-        ],
-        "modules-center": [
-            "mpd#control",
-            "custom/sep",
-            // "cava", cava module is brokey :(
-            // "custom/sep",
-            "mpd"
-        ],
-        "modules-right": [
-            "network",
-            "custom/sep",
-            "disk#home",
-            "disk#root",
-            "custom/sep",
-            "memory",
-            "custom/sep",
-            "temperature",
-            "cpu",
-            "custom/sep",
-            "clock"
-        ],
-        "cava": {
-            "framerate": 30,
-            "autosens": 1,
-            "bars": 14,
-            "bar_delimiter": 0,
-            "lower_cutoff_freq": 50,
-            "higher_cutoff_freq": 10000,
-            "method": "pipewire",
-            "stereo": true,
-            "format-icons": [
-                "▁",
-                "▂",
-                "▃",
-                "▄",
-                "▅",
-                "▆",
-                "▇",
-                "█"
-            ]
-        },
-        "clock": {
-            "format": "{:%H:%M}",
-            "format-alt": "{:%H:%M}",
-            "tooltip-format": "<tt><small>{calendar}</small></tt>",
-            "calendar": {
-                "mode": "month",
-                "mode-mon-col": 3,
-                "weeks-pos": "right",
-                "on-scroll": 1,
-                "format": {
-                    "months": "<span color='#ffead3'><b>{}</b></span>",
-                    "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-                }
-            },
-            "actions": {
-                "on-click": "shift_up",
-                "on-click-right": "shift_down",
-                "on-click-middle": "shift_reset"
-            }
-        },
-        "custom/sep": {
-            "format": ""
-        },
-        "cpu": {
-            "interval": 10,
-            "format": " {usage}%",
-            "max-length": 10
-        },
-        "disk#home": {
-            "path": "/home",
-            "format": "󰋜 {percentage_used}%"
-        },
-        "disk#root": {
-            "path": "/",
-            "format": "󰋊 {percentage_used}%"
-        },
-        "hyprland/workspaces": {
-            "all-outputs": false,
-            "format": "{icon}",
-            "on-click": "activate",
-            "persistent-workspaces": {
-                "DP-2": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10
-                ],
-                "DP-3": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10
-                ]
-            },
-            "format-icons": {
-                "active": "",
-                "urgent": "",
-                "default": "",
-                "empty": ""
-            }
-        },
-        "memory": {
-            "interval": 30,
-            "format": "󱘲 {}%",
-            "max-length": 10
-        },
-        "mpd": {
-            "format": "{stateIcon} {title}",
-            "format-paused": "{stateIcon}",
-            "max-length": 50,
-            "on-click": "mpc toggle",
-            "state-icons": {
-                "paused": "",
-                "playing": ""
-            }
-        },
-        "mpd#control": {
-            "format": "  {volume}% {elapsedTime:%M:%S}/{totalTime:%M:%S}",
-            "format-paused": " ",
-            "on-scroll-up": "mpc volume +1",
-            "on-scroll-down": "mpc volume -1"
-        },
-        "network": {
-            "interface": "enp4s0",
-            "format-disconnected": "󰖪 No Internet",
-            "format": "{ipaddr}: {bandwidthUpBytes} 󰓢 {bandwidthDownBytes}"
-        },
-        "temperature": {
-            "hwmon-path": [
-                "/sys/class/hwmon/hwmon3/temp3_input",
-                "/sys/class/hwmon/hwmon3/temp4_input"
-            ]
-        },
-        "tray": {
-            "icon-size": 20,
-            "spacing": 8
-        },
-        "wireplumber": {
-            "format": "{icon}  {volume}%",
-            "format-muted": "",
-            "on-click": "kitty pulsemixer",
-            "format-icons": [
-                "",
-                "",
-                ""
-            ]
+{
+    "position": "top",
+    "layer": "top",
+    "reload_style_on_change": true,
+    "spacing": 8,
+    "include": ["/home/zebu/.cache/wal/colors-waybar-calendar.jsonc"],
+    "modules-left": ["clock", "custom/sep", "tray"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["group/drawer", "wireplumber", "network"],
+
+    "hyprland/workspaces": {
+        "format": "",
+        "all-outputs": true,
+        "persistent-workspaces": {
+            "*": [1,2,3,4,5,6,7,8,9,10]
         }
+    },
+
+    "group/drawer": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-to-left": true,
+            "click-to-reveal": true
+        },
+        "modules": ["custom/drawer", "cpu", "temperature", "memory", "custom/drawerend"]
+    },
+    "custom/drawer": {
+        "format": "",
+        "tooltip": false,
+    },
+    "cpu": {
+        "format": "󰻠 {usage}",
+    },
+    "temperature": {
+        "format": " {temperatureC}",
+        "hwmon-path": [
+            "/sys/class/hwmon/hwmon3/temp3_input",
+            "/sys/class/hwmon/hwmon3/temp4_input"
+        ]
+    },
+    "memory": {
+        "format": "  {used}"
+    },
+    "custom/drawerend": {
+        "format": "|",
+        "tooltip": false,
+    },
+    "custom/sep": {
+        "format": "|",
+        "tooltip": false,
+    },
+    "tray": {
+        "icon-size": 24,
+        "spacing": 8,
+    },
+    "network": {
+        "format-ethernet":" ",
+        "format-disconnected": " ",
+        "tooltip-format-disconnected": "No Internet",
+        "tooltip-format-ethernet": "{ifname}",
+    },
+    "wireplumber": {
+        "format": "{icon}  {volume}",
+        "format-muted": "",
+        "on-click": "wezterm start pulsemixer",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     }
-]
+}

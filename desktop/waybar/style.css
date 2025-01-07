@@ -1,136 +1,107 @@
-@import url("colors.css");
+@import url("/home/zebu/.cache/wal/colors-waybar.css");
 
-/*********************/
-/* Colors            */
-/*********************/
-
-@define-color bg @color0;
-@define-color text @color15;
-
-@define-color bar1 @color4;
-@define-color bar2 @color2;
-@define-color bar3 @color3;
-@define-color bar4 @color5;
-@define-color bar5 @color6;
-
-@define-color highlight @bar1;
-@define-color inactive @color15;
-@define-color empty @color7;
-@define-color hover @color3;
-
-/*********************/
-/* Window settings   */
-/*********************/
+/************************/
+/**      WINDOW        **/
+/************************/
 
 * {
-  font-size: 18px;
+  font-size: 20px;
   font-family: "DejaVu Sans Mono", "Font Awesome 6", "DejaVuSansM Nerd Font";
-  border: none;
-  border-radius: 0;
 }
 
 window#waybar {
-  color: @text;
-  background: alpha(@bg, 0.80);
-}
-
-.modules-left,
-.modules-right,
-.modules-center {
-  padding: 0px 24px;
+  all: unset;
+  color: @foreground;
+  background: transparent;
 }
 
 .modules-left {
-  margin: 0px 0px 0px 12px;
+  margin: 4px 8px 0px 8px;
+  padding: 6px 16px;
+  border-radius: 16px;
+  background: alpha(@background, 0.5);
+}
+
+.modules-center {
+  margin: 4px 8px 0px 8px;
+  padding: 6px 16px;
+  border-radius: 16px;
+  background: alpha(@background, 0.5);
 }
 
 .modules-right {
-  margin: 0px 12px 0px 0px;
+  margin: 4px 8px 0px 8px;
+  padding: 6px 16px;
+  border-radius: 16px;
+  background: alpha(@background, 0.5);
 }
 
-/*********************/
-/* Audio modules     */
-/*********************/
-
-#wireplumber {
-  color: @bar2;
+tooltip {
+  margin: 8px 0px;
+  border-radius: 16px;
+  border: none;
+  background: alpha(@background, 0.8);
 }
 
-#wireplumber.muted {
-  padding: 0px 12px 0px 0px;
+/************************/
+/**        LEFT        **/
+/************************/
+
+#clock {
+  color: @foreground;
 }
 
-#mpd.control {
-  color: @bar3;
+/************************/
+/**      CENTER        **/
+/************************/
+
+#workspaces {
+  margin: -5px 8px -5px 8px;
 }
-
-#mpd {
-  color: @bar4;
-}
-
-/*********************/
-/* Custom modules    */
-/*********************/
-
-#custom-sep {
-  color: @text;
-  margin: 6px 0px;
-}
-
-/*********************/
-/* hypr modules      */
-/*********************/
 
 #workspaces button {
-  color: @inactive;
-  background: none;
-  transition-property: color;
-  transition-duration: 0.4s;
-  margin-left: -2px;
-  margin-right: -2px;
+  all: unset;
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+  color: @color8;
 }
 
 #workspaces button.empty {
-  color: @empty;
-}
-
-#workspaces button:hover {
-  color: @hover;
+  color: @color0;
 }
 
 #workspaces button.active {
-  color: @highlight;
+  color: @color1;
 }
 
-/*********************/
-/* Info modules      */
-/*********************/
-
-#clock {
-  color: @bar1;
+#workspaces button:hover {
+  color: @color2;
+  border: none;
 }
 
-#cpu {
-  color: @bar2;
+/************************/
+/**       RIGHT        **/
+/************************/
+
+#custom-drawer {
+  margin: 0px 8px 0px 0px;
 }
 
-#disk {
-  color: @bar4;
+#custom-drawerend {
+  margin: 0px 0px 0px 8px;
 }
 
-#memory {
-  color: @bar3;
+#cpu, #memory, #temperature {
+  padding: 0px 8px;
+  color: @color9;
+}
+
+#wireplumber {
+  color: @color10;
+  padding: 0px 8px;
 }
 
 #network {
-  color: @bar5;
+  padding: 0px 8px;
+  color: @color10;
 }
-
-#temperature {
-  color: @bar2;
-}
-
-#tray {
-  color: @text;
-}
-
