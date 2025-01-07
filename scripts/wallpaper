@@ -19,10 +19,11 @@ if [[ -f "$name.json" ]]; then
     wal --cols16 darken -f "$name.json" -a $alpha
 else
     if [[ $2 == "l" ]]; then
-        wal --cols16 lighten -i "$1" -a $alpha
+        kind="lighten"
     else
-        wal --cols16 darken -i "$1" -a $alpha
+        kind="darken"
     fi
+    wal --cols16 $kind -i "$1" -a $alpha --contrast 2.0 # extra contrast so I can actually see things
 fi
 
 makoctl reload
