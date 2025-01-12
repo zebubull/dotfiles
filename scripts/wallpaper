@@ -30,28 +30,3 @@ makoctl reload
 eww reload
 swww img -t wipe $1
 killall -SIGUSR2 waybar
-
-# Generating the icon to use in the rofi menu is difficult to
-# do while accounting for monitor sizes so you must provide your
-# own script to do so. If you have multiple monitors with different
-# sizes then I have no idea how to help you.
-#
-# If you are using my default rofi sizes:
-# The width should be your monitor width * 0.2.
-# The height should be your monitor height * 0.4.
-#
-# Here is the one I use for my 4k display, feel free to modify it
-#
-# out="$HOME/.config/rofi/icon.png"
-# magick "$1" -resize x864 "$out"
-# magick "$out" -gravity "$2" -crop 786x864+0+0 "$out"
-if [[ -e $HOME/.local/bin/rofi-icongen ]]; then
-    if [[ -z "$4" ]]; then
-        gravity="center"
-    else
-        gravity="$4"
-    fi
-    $HOME/.local/bin/rofi-icongen "$1" "$gravity"
-else
-    echo "rofi-icongen not found, skipping"
-fi
