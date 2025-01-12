@@ -1,12 +1,11 @@
 sort=-time
 layer=overlay
-background-color={background}cc
 width=250
 height=150
-border-size=2
+border-size=0
 border-color={foreground}
 text-color={foreground}
-border-radius=0
+border-radius=16
 icons=1
 max-icon-size=64
 default-timeout=5000
@@ -14,19 +13,17 @@ ignore-timeout=1
 font=DejaVuSansM Nerd Font
 
 [urgency=low]
-background-color={background}
+background-color={color8}88
 border-color={color8}
 text-color={foreground}
 
 [urgency=normal]
-background-color={background}
-border-color={color6}
+background-color={color1}88
 text-color={foreground}
 
 [urgency=critical]
-background-color={background}
+background-color={color2}88
 border-color={color2}
-text-color={color2}
 default-timeout=0
 
 [app-name="mpd-notification"]
