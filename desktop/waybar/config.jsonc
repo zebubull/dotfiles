@@ -23,11 +23,17 @@
             "transition-to-left": true,
             "click-to-reveal": true
         },
-        "modules": ["custom/drawer", "cpu", "temperature", "memory", "custom/drawerend"]
+        "modules": ["custom/drawer", "custom/gpu", "temperature#gpu", "cpu", "temperature", "memory", "custom/drawerend"]
     },
     "custom/drawer": {
         "format": "",
         "tooltip": false,
+    },
+    "custom/gpu": {
+        "exec": "cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent",
+        "format": "󰾲 {}",
+        "return-type": "",
+        "interval": 10
     },
     "cpu": {
         "format": "󰻠 {usage}",
@@ -37,6 +43,14 @@
         "hwmon-path": [
             "/sys/class/hwmon/hwmon3/temp3_input",
             "/sys/class/hwmon/hwmon3/temp4_input"
+        ]
+    },
+    "temperature#gpu": {
+        "format": " {temperatureC}",
+        "hwmon-path": [
+            "/sys/class/hwmon/hwmon2/temp1_input",
+            "/sys/class/hwmon/hwmon2/temp2_input",
+            "/sys/class/hwmon/hwmon2/temp3_input"
         ]
     },
     "memory": {

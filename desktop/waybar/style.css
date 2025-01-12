@@ -91,7 +91,7 @@ tooltip {
   margin: 0px 0px 0px 8px;
 }
 
-#cpu, #memory, #temperature {
+#cpu, #memory, #temperature, #custom-gpu {
   padding: 0px 8px;
   color: @color9;
 }
