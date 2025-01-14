@@ -13,16 +13,16 @@ ignore-timeout=1
 font=DejaVuSansM Nerd Font
 
 [urgency=low]
-background-color={color8}88
+background-color={color8}CC
 border-color={color8}
 text-color={foreground}
 
 [urgency=normal]
-background-color={color1}88
+background-color={color1}CC
 text-color={foreground}
 
 [urgency=critical]
-background-color={color2}88
+background-color={color2}CC
 border-color={color2}
 default-timeout=0
 
