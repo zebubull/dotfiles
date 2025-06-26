@@ -23,17 +23,17 @@
             "transition-to-left": true,
             "click-to-reveal": true
         },
-        "modules": ["custom/drawer", "custom/gpu", "temperature#gpu", "cpu", "temperature", "memory", "custom/drawerend"]
+        "modules": ["custom/drawer", "custom/gpu", "custom/tgpu", "cpu", "temperature", "memory", "custom/drawerend"]
     },
     "custom/drawer": {
         "format": "",
         "tooltip": false,
     },
     "custom/gpu": {
-        "exec": "cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent",
+        "exec": "cat /sys/class/drm/card1/device/gpu_busy_percent",
         "format": "󰾲 {}",
         "return-type": "",
-        "interval": 10
+        "interval": 15
     },
     "cpu": {
         "format": "󰻠 {usage}",
@@ -45,13 +45,11 @@
             "/sys/class/hwmon/hwmon3/temp4_input"
         ]
     },
-    "temperature#gpu": {
-        "format": " {temperatureC}",
-        "hwmon-path": [
-            "/sys/class/hwmon/hwmon2/temp1_input",
-            "/sys/class/hwmon/hwmon2/temp2_input",
-            "/sys/class/hwmon/hwmon2/temp3_input"
-        ]
+    "custom/tgpu": {
+        "format": " {}",
+        "exec": "echo $(($(cat /sys/class/drm/card1/device/hwmon/*/temp1_input) / 1000))",
+        "return-type": "",
+        "interval": 30
     },
     "memory": {
         "format": "  {used}"
