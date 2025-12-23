@@ -15,15 +15,19 @@ else
     alpha="$3"
 fi
 
-if [[ -f "$name.json" ]]; then
-    wal --cols16 darken -f "$name.json" -a $alpha
+if [[ $2 == "--theme" ]]; then
+    wal --cols16 darken --theme $3
 else
-    if [[ $2 == "l" ]]; then
-        kind="lighten"
+    if [[ -f "$name.json" ]]; then
+        wal --cols16 darken -f "$name.json" -a $alpha
     else
-        kind="darken"
+        if [[ $2 == "l" ]]; then
+            kind="lighten"
+        else
+            kind="darken"
+        fi
+        wal --cols16 $kind -i "$1" -a $alpha --contrast 1.0 # extra contrast so I can actually see things
     fi
-    wal --cols16 $kind -i "$1" -a $alpha --contrast 2.0 # extra contrast so I can actually see things
 fi
 
 makoctl reload
