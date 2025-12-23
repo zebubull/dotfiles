@@ -92,6 +92,9 @@ config.keys = {
   { key = 'LeftArrow', mods = 'CTRL', action = act.AdjustPaneSize {'Left', 1}},
   { key = 'RightArrow', mods = 'CTRL', action = act.AdjustPaneSize {'Right', 1}},
   { key = 'r', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration},
+
+  { key = '+', mods = 'SHIFT|CTRL', action = act.IncreaseFontSize},
+  { key = '-', mods = 'CTRL', action = act.DecreaseFontSize},
 }
 
 return config
