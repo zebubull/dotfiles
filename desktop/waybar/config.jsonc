@@ -1,85 +1,67 @@
 {
+    //
+    // Bar config
+    // 
     "position": "top",
+    "height": 32,
     "layer": "top",
+    "exclusive": false,
     "reload_style_on_change": true,
     "spacing": 8,
-    "include": ["/home/zebu/.cache/wal/colors-waybar-calendar.jsonc"],
-    "modules-left": ["clock", "custom/sep", "tray"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["group/drawer", "wireplumber", "network"],
 
+    //
+    // Modules
+    // 
+    "include": ["/home/zebu/.cache/wal/colors-waybar-calendar.jsonc"],
+    "modules-left": ["clock", "custom/sep", "hyprland/workspaces", "custom/sep", "tray"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["temperature", "cpu", "memory", "custom/sep", "wireplumber", "network"],
+
+    //
+    // Module Config
+    // 
+    "custom/sep": {
+        "format": "┃",
+        "tooltip": false,
+    },
+    
     "hyprland/workspaces": {
-        "format": "",
+        // "format": "",
         "all-outputs": true,
         "persistent-workspaces": {
             "*": [1,2,3,4,5,6,7,8,9,10]
         }
     },
+    "tray": {
+        "icon-size": 24,
+        "spacing": 8,
+    },
+    "hyprland/window": {
+    },
 
-    "group/drawer": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 500,
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": ["custom/drawer", "custom/gpu", "custom/tgpu", "cpu", "temperature", "memory", "custom/drawerend"]
-    },
-    "custom/drawer": {
-        "format": "",
-        "tooltip": false,
-    },
-    "custom/gpu": {
-        "exec": "cat /sys/class/drm/card1/device/gpu_busy_percent",
-        "format": "󰾲 {}",
-        "return-type": "",
-        "interval": 15
-    },
-    "cpu": {
-        "format": "󰻠 {usage}",
-    },
     "temperature": {
-        "format": " {temperatureC}",
+        "format": "TMP {temperatureC}",
         "hwmon-path": [
             "/sys/class/hwmon/hwmon3/temp3_input",
             "/sys/class/hwmon/hwmon3/temp4_input"
         ]
     },
-    "custom/tgpu": {
-        "format": " {}",
-        "exec": "echo $(($(cat /sys/class/drm/card1/device/hwmon/*/temp1_input) / 1000))",
-        "return-type": "",
-        "interval": 30
+    "cpu": {
+        "format": "CPU {usage}",
     },
     "memory": {
-        "format": "  {used}"
+        "format": "MEM {percentage}"
     },
-    "custom/drawerend": {
-        "format": "|",
-        "tooltip": false,
-    },
-    "custom/sep": {
-        "format": "|",
-        "tooltip": false,
-    },
-    "tray": {
-        "icon-size": 24,
-        "spacing": 8,
+
+    "wireplumber": {
+        "format": "VOL {volume}",
+        "format-muted": "VOL MUT",
+        "on-click": "wezterm start pulsemixer",
     },
     "network": {
-        "format-ethernet":" ",
-        "format-disconnected": " ",
-        "tooltip-format-disconnected": "No Internet",
+        "format-ethernet":"ETH OK ",
+        "format-disconnected": "ETH BAD",
+        "tooltip-format-disconnected": "ETH BAD",
         "tooltip-format-ethernet": "{ifname}",
-    },
-    "wireplumber": {
-        "format": "{icon}  {volume}",
-        "format-muted": "",
-        "on-click": "wezterm start pulsemixer",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
     }
 }
