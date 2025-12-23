@@ -9,8 +9,8 @@
 
 #window {{
     background-color: @background;
-    border-radius: 16px;
-    border: none;
+    border: 3px;
+    border-color: {color14};
 }}
 
 #textbox-sep {{
