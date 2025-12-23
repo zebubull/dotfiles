@@ -15,8 +15,9 @@ $vol: $color5;
 }
 
 .dash {
-  background-color: $bg;
-  border-radius: 16px
+  background-color: rgba($bg, 0.55);
+  border-radius: 0px;
+	border: 3px solid $color14;
 }
 
 .album_art {
