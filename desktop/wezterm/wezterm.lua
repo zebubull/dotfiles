@@ -60,7 +60,7 @@ if color_file == nil then print("failed to locate wal colors") else set_colors(c
 config.font = wezterm.font 'DejaVuSansM Nerd Font Mono'
 config.font_size = 20.0
 
-config.window_background_opacity = 0.92
+config.window_background_opacity = 0.84
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
